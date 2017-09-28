@@ -1,0 +1,44 @@
+{
+  "name": "weather-app",
+  "version": "0.1.0",
+  "author": "Luke Peavey",
+  "private": true,
+  "dependencies": {
+    "aphrodite": "^1.2.4",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "redux-form": "^7.0.4",
+    "redux-saga": "^0.15.6",
+    "sanitize.css": "^5.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-info": "^3.2.11",
+    "@storybook/addon-options": "^3.2.10",
+    "@storybook/react": "^3.2.11",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3",
+    "prettier": "^1.7.1",
+    "react-scripts": "1.0.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,css,json}": [
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  }
+}

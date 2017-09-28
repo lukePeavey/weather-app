@@ -1,0 +1,43 @@
+@import '../../node_modules/sanitize.css/sanitize.css';
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+input[type='text'],
+input[type='search'],
+input[type='password'],
+input[type='email'],
+input[type='range'],
+input[type='tel'],
+input[type='url'] {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0px;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-left: 22px;
+  box-shadow: none;
+}
+
+input[type='text']:focus,
+input[type='search']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='range']:focus,
+input[type='tel']:focus,
+input[type='url']:focus {
+  outline: none;
+}
