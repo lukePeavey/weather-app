@@ -6,9 +6,13 @@ const inputTypes = ['text', 'email', 'password', 'url', 'tel', 'number', 'search
 
 export default class TextInput extends Component {
   static propTypes = {
+    /** The input type */
     type: PropTypes.oneOf(inputTypes).isRequired,
+    /** The label that will be displayed for the input */
     label: PropTypes.string,
+    /** Input props passed to component by reduxForm  */
     input: PropTypes.object,
+    /** Meta props passed to component by reduxForm */
     meta: PropTypes.object
   }
 
