@@ -3,13 +3,14 @@ import { reduxForm, Field } from 'redux-form'
 import TextInput from '../TextInput'
 import { StyleSheet, css } from 'aphrodite'
 
+/** The form displayed on the login page */
 class LoginForm extends Component {
   render() {
     return (
       <div className={css(styles.wrapper)}>
         <form className={css(styles.form)}>
           <div className={css(styles.formControl)}>
-            <Field component={TextInput} name="username" type="text" placeholder="Username" />
+            <Field component={TextInput} name="email" type="email" placeholder="Email" />
           </div>
           <div className={css(styles.formControl)}>
             <Field component={TextInput} name="password" type="password" placeholder="Password" />

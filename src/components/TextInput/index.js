@@ -4,6 +4,7 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import Input from '../Input'
 const inputTypes = ['text', 'email', 'password', 'url', 'tel', 'number', 'search']
 
+/** Basic text input component */
 export default class TextInput extends Component {
   static propTypes = {
     /** The input type */

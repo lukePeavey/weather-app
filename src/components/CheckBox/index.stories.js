@@ -9,7 +9,7 @@ const CheckBoxExample = reduxForm({ form: 'storybook.checkbox' })(() => (
   </form>
 ))
 
-storiesOf('CheckBox', module).add('default', () => (
+storiesOf('Forms/CheckBox', module).add('default', () => (
   <div style={{ padding: 30, display: 'flex', alignItems: 'center' }}>
     <CheckBoxExample />
   </div>

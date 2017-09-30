@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 
+/** A generic input component */
 const Input = ({ styles: customStyles, ...props }) => (
   <input className={css(styles.input, customStyles)} {...props} />
 )
@@ -19,7 +20,8 @@ const styles = StyleSheet.create({
       outline: 'none'
     },
     '::placeholder': {
-      color: 'rgba(0,0,0,0.35)'
+      color: 'rgba(0,0,0,0.35)',
+      fontSize: 14
     }
   }
 })
