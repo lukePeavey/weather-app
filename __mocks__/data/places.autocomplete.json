@@ -1,0 +1,192 @@
+[
+  {
+    "description": "Miami, FL, United States",
+    "id": "f239822f71d3ae46093cd82eb96433ae300852fa",
+    "matched_substrings": [
+      {
+        "length": 4,
+        "offset": 0
+      }
+    ],
+    "place_id": "ChIJEcHIDqKw2YgRZU-t3XHylv8",
+    "reference":
+      "CjQwAAAAngbWYdJT3ejtAXYaWkqgX5Ow0X5CDwmwFL-wKF-8mK_-DbRiAfoW24RQ29sxFyY4EhDZbxvzYnQw2bhQSjaTRZNYGhSA6Txlztz90SqI9ABSrv1g3L_qmA",
+    "structured_formatting": {
+      "main_text": "Miami",
+      "main_text_matched_substrings": [
+        {
+          "length": 4,
+          "offset": 0
+        }
+      ],
+      "secondary_text": "FL, United States"
+    },
+    "terms": [
+      {
+        "offset": 0,
+        "value": "Miami"
+      },
+      {
+        "offset": 7,
+        "value": "FL"
+      },
+      {
+        "offset": 11,
+        "value": "United States"
+      }
+    ],
+    "types": ["locality", "political", "geocode"]
+  },
+  {
+    "description": "Miami Beach, FL, United States",
+    "id": "316beed087d79e522e1df83659cfc6e172d08ac2",
+    "matched_substrings": [
+      {
+        "length": 4,
+        "offset": 0
+      }
+    ],
+    "place_id": "ChIJud3-Kxem2YgR62OUJUEXvjc",
+    "reference":
+      "CkQ2AAAAdE_0WeLqNXh5lidGkqYJgxyZmbR_urdcoH7-XbkM99e6NxOJBrpTLz6OR8MeOXWXPbq8cOBqXdlDPBqqd3juHxIQW-siBHC_wZXt7N0kmHHa9BoUBBk1SEXW042mU8Q3xr13OOzJVt8",
+    "structured_formatting": {
+      "main_text": "Miami Beach",
+      "main_text_matched_substrings": [
+        {
+          "length": 4,
+          "offset": 0
+        }
+      ],
+      "secondary_text": "FL, United States"
+    },
+    "terms": [
+      {
+        "offset": 0,
+        "value": "Miami Beach"
+      },
+      {
+        "offset": 13,
+        "value": "FL"
+      },
+      {
+        "offset": 17,
+        "value": "United States"
+      }
+    ],
+    "types": ["locality", "political", "geocode"]
+  },
+  {
+    "description": "Miami Gardens, FL, United States",
+    "id": "a11cfecbc316260623f981d742b2fea4c573fd6f",
+    "matched_substrings": [
+      {
+        "length": 4,
+        "offset": 0
+      }
+    ],
+    "place_id": "ChIJZy-MgLuv2YgR1Wvi5YjYme0",
+    "reference":
+      "CkQ4AAAA70X93xJ9iwL_9_Txm8PndYFWT8wyDqh16pL6heHgj8Bpisnv9wYZH-gxPjU9Y4qy3hWpIgtHCe4bvcPcFOMOPRIQ433UbK8-Fb_xEfb-Xhn43xoUaGUqd70Xa7HFFTE9eoF0nWt_mE0",
+    "structured_formatting": {
+      "main_text": "Miami Gardens",
+      "main_text_matched_substrings": [
+        {
+          "length": 4,
+          "offset": 0
+        }
+      ],
+      "secondary_text": "FL, United States"
+    },
+    "terms": [
+      {
+        "offset": 0,
+        "value": "Miami Gardens"
+      },
+      {
+        "offset": 15,
+        "value": "FL"
+      },
+      {
+        "offset": 19,
+        "value": "United States"
+      }
+    ],
+    "types": ["locality", "political", "geocode"]
+  },
+  {
+    "description": "Miamisburg, OH, United States",
+    "id": "1dd7529bd1a2392c220daa101c0fa6e80a5c3db4",
+    "matched_substrings": [
+      {
+        "length": 4,
+        "offset": 0
+      }
+    ],
+    "place_id": "ChIJjVJnuoBiQIgR9yJWFI8WWg4",
+    "reference":
+      "CkQ1AAAA_YLwSiP-6Dlq3kfHXzWddgRFb_-Ay8Qgvy0vCVZaPbUdy5y656tNSJMmvm3uzzJjGa0EUypyc8-eBliG9kYk5BIQbt0F7s8_r98pt-DWIW7bsRoUIVvD3JL1xJUFskheXVJVBQCnTls",
+    "structured_formatting": {
+      "main_text": "Miamisburg",
+      "main_text_matched_substrings": [
+        {
+          "length": 4,
+          "offset": 0
+        }
+      ],
+      "secondary_text": "OH, United States"
+    },
+    "terms": [
+      {
+        "offset": 0,
+        "value": "Miamisburg"
+      },
+      {
+        "offset": 12,
+        "value": "OH"
+      },
+      {
+        "offset": 16,
+        "value": "United States"
+      }
+    ],
+    "types": ["locality", "political", "geocode"]
+  },
+  {
+    "description": "Miami Lakes, FL, United States",
+    "id": "b4dfea0ba5649b8efc8c66693e28041461b0c045",
+    "matched_substrings": [
+      {
+        "length": 4,
+        "offset": 0
+      }
+    ],
+    "place_id": "ChIJbw0_OX272YgR4-dy1EwCwDs",
+    "reference":
+      "CkQ2AAAAkv-8Zz17V4kJkbmX-QdhPqDJJ20u_Q-oAAiUtbukpQ8o86sQALj1ei3ltS2_tF1UALzmQzS1mbcqsQtbPgXNPxIQVVaMlDv5KzTw-P2R1A0VLxoUCBcNksY3UbM7EoV6rcHSVme97qo",
+    "structured_formatting": {
+      "main_text": "Miami Lakes",
+      "main_text_matched_substrings": [
+        {
+          "length": 4,
+          "offset": 0
+        }
+      ],
+      "secondary_text": "FL, United States"
+    },
+    "terms": [
+      {
+        "offset": 0,
+        "value": "Miami Lakes"
+      },
+      {
+        "offset": 13,
+        "value": "FL"
+      },
+      {
+        "offset": 17,
+        "value": "United States"
+      }
+    ],
+    "types": ["locality", "political", "geocode"]
+  }
+]

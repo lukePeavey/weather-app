@@ -1,0 +1,117 @@
+[
+  {
+    "local_time": "Sep 30th, 12:25 pm",
+    "formatted_address": "Paris, France",
+    "address_components": [
+      {
+        "long_name": "Paris",
+        "short_name": "Paris",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Paris",
+        "short_name": "Paris",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "Île-de-France",
+        "short_name": "Île-de-France",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "France",
+        "short_name": "FR",
+        "types": ["country", "political"]
+      }
+    ],
+    "adr_address":
+      "<span class=\"locality\">Paris</span>, <span class=\"country-name\">France</span>",
+    "geometry": {
+      "location": {
+        "lat": 48.85661400000001,
+        "lng": 2.3522219
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 48.9021449,
+          "lng": 2.4699208
+        },
+        "southwest": {
+          "lat": 48.815573,
+          "lng": 2.224199
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+    "id": "691b237b0322f28988f3ce03e321ff72a12167fd",
+    "name": "Paris",
+    "place_id": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+    "reference":
+      "CmRbAAAAhmANYYr6In6xcjx45MHjOOBl-cy5ZN89UFXTvhAvgjTHvvkETUrxsHArPjLDjxYnwk5p35x7YadzNlqFq6W9NLecf4J-aJf2ivY-0EiRDj6X2H48xzYxRrhA7ki89_QzEhCcUgyJnCKzMdSIWkSCACUVGhTc2D3tPBb40SO7qqSbGe3tVrGfrw",
+    "scope": "GOOGLE",
+    "types": ["locality", "political"],
+    "url": "https://maps.google.com/?q=Paris,+France&ftid=0x47e66e1f06e2b70f:0x40b82c3688c9460",
+    "utc_offset": 120,
+    "vicinity": "Paris"
+  },
+  {
+    "local_time": "Sep 30th, 6:25 am",
+    "formatted_address": "Astoria, Queens, NY, USA",
+    "address_components": [
+      {
+        "long_name": "Astoria",
+        "short_name": "Astoria",
+        "types": ["neighborhood", "political"]
+      },
+      {
+        "long_name": "Queens",
+        "short_name": "Queens",
+        "types": ["sublocality_level_1", "sublocality", "political"]
+      },
+      {
+        "long_name": "Queens County",
+        "short_name": "Queens County",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "New York",
+        "short_name": "NY",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United States",
+        "short_name": "US",
+        "types": ["country", "political"]
+      }
+    ],
+    "adr_address":
+      "Astoria, <span class=\"locality\">Queens</span>, <span class=\"region\">NY</span>, <span class=\"country-name\">USA</span>",
+    "geometry": {
+      "location": {
+        "lat": 40.7643574,
+        "lng": -73.92346189999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 40.78260179999999,
+          "lng": -73.9022182
+        },
+        "southwest": {
+          "lat": 40.7529475,
+          "lng": -73.9447342
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+    "name": "Astoria",
+    "place_id": "ChIJU6W15zZfwokRDhGErMSvCpw",
+    "reference":
+      "CmRbAAAAI2cFp5g7InJ0Z5FV0sCHaS9iLlxIigCD45F-5kH_jR689snBYNB4eq7ObGFWMG0jxQ0hzqn7DaU76ctVjmCMz8VPMVxmalgw7mWoEkLoljoFJaicaVSQAOFbt0yx099wEhDCEIH_8efmssE0DiwpGYjIGhQfQG_0hjjKmH6L1zL3gyjUO5YoHw",
+    "scope": "GOOGLE",
+    "types": ["neighborhood", "political"],
+    "url":
+      "https://maps.google.com/?q=Astoria,+Queens,+NY,+USA&ftid=0x89c25f36e7b5a553:0x9c0aafc4ac84110e",
+    "utc_offset": -240,
+    "vicinity": "Queens"
+  }
+]
