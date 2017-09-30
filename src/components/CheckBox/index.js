@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite'
+import Input from '../Input'
 
 /** A custom CheckBox component, designed for use with Redux Forms */
 export default class CheckBox extends Component {
@@ -22,7 +23,7 @@ export default class CheckBox extends Component {
     let isChecked = inputProps.value ? 'isChecked' : ''
     return (
       <label htmlFor={name} className={css(styles.checkBox)} onClick={this.handleClick}>
-        <input type="checkbox" className={css(styles.input)} {...inputProps} />
+        <Input type="checkbox" styles={styles.input} {...inputProps} />
         <div className={css(styles.control, styles[isChecked])}>
           <svg className={css(styles.check, styles[isChecked])} viewBox="0 0 24 24">
             <path fill="none" d="M6,11.3 L10.3,16 L18,6.2" />
