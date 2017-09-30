@@ -3,5 +3,7 @@ import { storiesOf } from '@storybook/react'
 import TextInput from '.'
 
 storiesOf('TextInput', module).add('default', () => (
-  <TextInput placeholder="Enter some text" type="text" />
+  <div className="storyWrapper">
+    <TextInput placeholder="Enter some text" type="text" name="text_input" />
+  </div>
 ))

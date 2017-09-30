@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite/no-important'
+import Input from '../Input'
+const inputTypes = ['text', 'email', 'password', 'url', 'tel', 'number', 'search']
 
-class TextInput extends Component {
+export default class TextInput extends Component {
   static propTypes = {
-    type: PropTypes.oneOf([
-      'text',
-      'email',
-      'password',
-      'url',
-      'tel',
-      'number'
-    ]),
-    name: PropTypes.string,
-    input: PropTypes.object
+    type: PropTypes.oneOf(inputTypes).isRequired,
+    label: PropTypes.string,
+    input: PropTypes.object,
+    meta: PropTypes.object
   }
 
   static defaultProps = {
@@ -26,23 +22,25 @@ class TextInput extends Component {
   }
 
   handleBlur = event => {
+    let { input } = this.props
     this.setState({ focused: false })
-    if (this.props.input.onBlur) this.props.input.onBlur()
+    if (input && input.onBlur) input.onBlur()
   }
 
   handleFocus = event => {
+    let { input } = this.props
     this.setState({ focused: true })
-    if (this.props.input.onFocus) this.props.input.onFocus()
+    if (input && input.onBlur) input.onBlur()
   }
 
   render() {
     let { input, ...props } = this.props
     return (
       <div className={css(styles.field, this.state.focused && styles.focus)}>
-        <input
-          {...input}
+        <Input
           {...props}
-          className={css(styles.input)}
+          {...input}
+          styles={styles.input}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         />
@@ -68,9 +66,6 @@ const styles = StyleSheet.create({
     height: 36,
     padding: '0 24px',
     borderStyle: 'solid',
-    borderWidth: 0,
-    fontSize: 15
+    borderWidth: 0
   }
 })
-
-export default TextInput
