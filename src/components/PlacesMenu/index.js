@@ -24,7 +24,7 @@ const PlacesMenu = ({ searchSuggestions, savedPlaces }) => {
       <div className={css(styles.dropDown)}>
         <ul className={css(styles.list)}>
           {isEmpty(searchSuggestions) ? (
-            <SavedPlaces places={savedPlaces} />
+            <SavedPlaces places={savedPlaces || []} />
           ) : (
             <Suggestions suggestions={searchSuggestions} />
           )}
@@ -35,10 +35,20 @@ const PlacesMenu = ({ searchSuggestions, savedPlaces }) => {
 }
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     width: 450,
+    height: 40,
     border: 'solid 1px rgba(0,0,0,0.12)'
   },
-  dropDown: {},
+  dropDown: {
+    position: 'absolute',
+    zIndex: 99,
+    top: 'calc(100% + 5px)',
+    left: 0,
+    width: '100%',
+    backgroundColor: '#fff',
+    border: 'solid 1px rgba(0,0,0,0.12)'
+  },
   list: {
     paddingLeft: 0,
     margin: 0,

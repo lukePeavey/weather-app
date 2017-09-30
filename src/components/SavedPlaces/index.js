@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite'
 import PlaceIcon from '../icons/Place'
 
 /** A list of saved places for the current user */
-const SavedPlaces = ({ places }) =>
+const SavedPlaces = ({ places = [] }) =>
   places.map(({ formatted_address, place_id, local_time }) => (
     <a href="#" className={css(styles.place)} onClick={console.log('click')}>
       <span className="name">{formatted_address}</span>

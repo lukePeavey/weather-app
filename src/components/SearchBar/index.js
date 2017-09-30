@@ -22,17 +22,18 @@ const styles = StyleSheet.create({
   searchBar: {
     height: 40,
     position: 'relative',
-    borderBottom: 'solid 1px rgba(0,0,0,0.1)'
+    borderBottom: 'solid 1px rgba(0,0,0,0.1)',
+    backgroundColor: '#fff'
   },
   input: {
-    height: 36,
-    padding: '0 24',
+    height: 40,
+    padding: '0 24px',
     paddingLeft: 40
   },
   iconWrapper: {
     position: 'absolute',
-    left: 8,
-    top: 8,
+    left: 10,
+    top: 9,
     zIndex: 2
   }
 })
