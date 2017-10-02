@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import WeatherIcon from '../WeatherIcon'
 
 const ForecastItem = ({ forecastText, unit }) => {
-  const text = forecastText[unit === 'fahrenheit' ? 'fcttext' : 'fcttext_metric']
+  const text = forecastText[unit === 'celsius' ? 'fcttext_metric' : 'fcttext']
   return (
     <section className={css(styles.forecastItem)}>
       <WeatherIcon className={css(styles.icon)} name={forecastText.icon} />
@@ -29,7 +29,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    background: 'rgba(255,255,255,0.3)'
+    background: 'rgba(0, 0, 0, 0.04)',
+    color: '#f1f1f1',
+    marginBottom: 20,
+    padding: 14
   },
   night: {
     marginTop: 8
