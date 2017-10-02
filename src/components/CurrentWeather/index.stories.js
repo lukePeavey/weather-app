@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
     width: '100%',
     left: 0,
     top: 0,
-    background: 'linear-gradient(to bottom, #45457f, rgba(77, 77, 127, 0.93))'
+    background: 'linear-gradient(to bottom, #7288a5, rgba(114, 136, 165, 0.9))'
   }
 })

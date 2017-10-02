@@ -19,7 +19,7 @@ export default class CurrentWeather extends PureComponent {
 
     return (
       <main className={css(styles.currentWeather)}>
-        <section className={css(styles.temp)}>{temp}</section>
+        <section className={css(styles.temp)}>{temp}&deg;</section>
         <section className={css(styles.conditions)}>
           <div className={css(styles.text)}>{weather}</div>
           <WeatherIcon className={css(styles.icon)} name={icon} />
@@ -31,7 +31,10 @@ export default class CurrentWeather extends PureComponent {
 
 const styles = StyleSheet.create({
   currentWeather: {
-    display: 'flex'
+    display: 'flex',
+    width: 700,
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
   temp: {
     display: 'flex',
