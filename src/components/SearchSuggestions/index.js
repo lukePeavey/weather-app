@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite/no-important'
 import PlaceIcon from '../icons/Place'
 
 /** Displays a list of autocomplete suggestions for the places search bar */

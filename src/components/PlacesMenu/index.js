@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite/no-important'
 import isEmpty from 'lodash/isEmpty'
 import SearchBar from '../SearchBar'
 import SavedPlaces from '../SavedPlaces'

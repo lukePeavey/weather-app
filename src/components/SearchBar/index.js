@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite/no-important'
 import Input from '../Input'
 import SearchIcon from '../icons/Search'
 

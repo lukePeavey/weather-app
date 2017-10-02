@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite/no-important'
 import PlaceIcon from '../icons/Place'
 
 /** A list of saved places for the current user */

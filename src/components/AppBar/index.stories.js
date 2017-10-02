@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite/no-important'
 import { storiesOf } from '@storybook/react'
 import PlacesMenu from '../PlacesMenu'
 import SettingsIcon from '../icons/Settings'
