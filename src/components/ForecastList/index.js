@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: 700,
     marginLeft: 'auto',
-    marginRight: 'auto'
+    marginRight: 'auto',
+    color: '#f1f1f1'
   }
 })
 
