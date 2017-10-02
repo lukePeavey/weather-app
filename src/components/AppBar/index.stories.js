@@ -6,7 +6,6 @@ import SettingsIcon from '../icons/Settings'
 import SearchIcon from '../icons/Search'
 import autocompleteData from '../../../__mocks__/data/places.autocomplete.json'
 import placesData from '../../../__mocks__/data/places.json'
-import background from '../../images/green-field.jpg'
 
 const CurrentPlace = ({ place }) => (
   <div className={css(styles.currentPlace)}>
