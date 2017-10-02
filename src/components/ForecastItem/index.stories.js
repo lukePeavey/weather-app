@@ -25,7 +25,7 @@ stories.add('Day fahrenheit', () => (
 
 stories.add('Day celsius ', () => (
   <div className="storyWrapper">
-    <ForecastItem forecastText={forecastDay} unit="Celsius" />
+    <ForecastItem forecastText={forecastDay} unit="celsius" />
   </div>
 ))
 
@@ -37,6 +37,6 @@ stories.add('Night fahrenheit', () => (
 
 stories.add('Night celsius ', () => (
   <div className="storyWrapper">
-    <ForecastItem forecastText={forecastNight} unit="Celsius" />
+    <ForecastItem forecastText={forecastNight} unit="celsius" />
   </div>
 ))
