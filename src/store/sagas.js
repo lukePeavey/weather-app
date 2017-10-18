@@ -1,4 +1,9 @@
 import { all } from 'redux-saga/effects'
-// Import sagas from each redux module here
+import authSaga from './auth/sagas'
+import placesSaga from './places/sagas'
+import weatherSaga from './weather/sagas'
 
-export default function* rootSaga() {}
+export default function* rootSaga() {
+  // Run all sagas in parallel
+  yield all([authSaga(), placesSaga(), weatherSaga()])
+}

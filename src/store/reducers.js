@@ -1,9 +1,16 @@
 import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
 import { reducer as form } from 'redux-form'
-// Import the reducer from each redux module
+import { authReducer as auth } from './auth/reducer'
+import { placesReducer as places } from './places/reducer'
+import { settingsReducer as settings } from './settings/reducer'
+import { weatherReducer as weather } from './weather/reducer'
 
 export default combineReducers({
   router,
-  form
+  form,
+  auth,
+  places,
+  settings,
+  weather
 })
