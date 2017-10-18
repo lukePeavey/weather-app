@@ -12,7 +12,7 @@ import * as fromState from '../selectors'
  */
 function* fetchCurrentWeather({ payload: { placeid } }) {
   try {
-    let weather = yield call(api.get, `/weather/current/${placeid}`, params)
+    let weather = yield call(api.get, `/weather/current/${placeid}`)
     yield put(actions.fetchCurrentWeatherSuccess(weather, placeid))
   } catch (error) {
     yield put(actions.fetchCurrentWeatherFail())
