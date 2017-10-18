@@ -1,0 +1,11 @@
+import config from '../../config'
+const MODULE_NAMESPACE = 'settings'
+const type = actionName => `${config.NAMESPACE}/${MODULE_NAMESPACE}/${actionName}`
+
+export const FETCH_SETTINGS_REQUEST = 'FETCH_SETTINGS_REQUEST'
+export const FETCH_SETTINGS_SUCCESS = 'FETCH_SETTINGS_SUCCESS'
+export const FETCH_SETTINGS_FAIL = 'FETCH_SETTINGS_FAIL'
+
+export const UPDATE_SETTING_REQUEST = 'UPDATE_SETTING_REQUEST'
+export const UPDATE_SETTING_SUCCESS = 'UPDATE_SETTING_SUCCESS'
+export const UPDATE_SETTING_FAIL = 'UPDATE_SETTING_FAIL'
