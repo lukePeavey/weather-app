@@ -70,3 +70,53 @@ export const GpsIcon = props => (
     </svg>
   </Icon>
 )
+
+/** Location arrow (aka near me) */
+export const NearMeIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z" />
+    </svg>
+  </Icon>
+)
+
+/** Show more (three vertical dots) */
+export const DotsVerticalIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+    </svg>
+  </Icon>
+)
+
+/** Show more (three horizontal dots) */
+export const DotsIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+    </svg>
+  </Icon>
+)
+
+/** Visibility icon  */
+export const VisibilityIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+    </svg>
+  </Icon>
+)
+
+/** Send icon */
+export const SendIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
