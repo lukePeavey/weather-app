@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import get from 'lodash/get'
 
 /** Expand Less Icon  */
-const ExpandLessIcon = ({ color, size, style }) => {
-  let inlineStyles = { ...Object(style) }
+const ExpandLessIcon = ({ color, size, styles: customStyles, ...props }) => {
+  let inlineStyles = get(props, 'style', {})
   if (color) inlineStyles = { ...inlineStyles, color }
   if (size) inlineStyles = { ...inlineStyles, width: size, height: size }
   return (
-    <div className={css(styles.icon)} style={inlineStyles}>
+    <div className={css(styles.icon, customStyles)} style={inlineStyles}>
       <svg className={css(styles.svg)} viewBox="0 0 24 24" height="24" width="24">
         <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
         <path d="M0 0h24v24H0z" fill="none" />

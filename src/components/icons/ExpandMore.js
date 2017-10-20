@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import get from 'lodash/get'
 
 /** Expand More Icon  */
-const ExpandMoreIcon = ({ color, size, style }) => {
-  let inlineStyles = { ...Object(style) }
+const ExpandMoreIcon = ({ color, size, styles: customStyles, ...props }) => {
+  let inlineStyles = get(props, 'style', {})
   if (color) inlineStyles = { ...inlineStyles, color }
   if (size) inlineStyles = { ...inlineStyles, width: size, height: size }
   return (
-    <div className={css(styles.icon)} style={inlineStyles}>
+    <div className={css(styles.icon, customStyles)} style={inlineStyles}>
       <svg className={css(styles.svg)} viewBox="0 0 24 24" height="24" width="24">
         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
         <path d="M0 0h24v24H0z" fill="none" />

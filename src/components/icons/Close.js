@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import get from 'lodash/get'
 
 /** Close Icon  */
-const CloseIcon = ({ color, size, style }) => {
-  let inlineStyles = { ...Object(style) }
+const CloseIcon = ({ color, size, styles: customStyles, ...props }) => {
+  let inlineStyles = get(props, 'style', {})
   if (color) inlineStyles = { ...inlineStyles, color }
   if (size) inlineStyles = { ...inlineStyles, width: size, height: size }
   return (
-    <div className={css(styles.icon)} style={inlineStyles}>
+    <div className={css(styles.icon, customStyles)} style={inlineStyles}>
       <svg className={css(styles.svg)} viewBox="0 0 24 24" height="24" width="24">
         <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
         <path d="M0 0h24v24H0z" fill="none" />
