@@ -1,65 +1,74 @@
 import React from 'react'
+import Button from '../Button'
+import { StyleSheet, css } from 'aphrodite/no-important'
+
 import { storiesOf } from '@storybook/react'
-// Import Icons
-import SearchIcon from './Search'
-import PlaceIcon from './Place'
-import GeolocationIcon from './Geolocation'
-import SettingsIcon from './Settings'
-import MenuIcon from './Menu'
-import ExpandMoreIcon from './ExpandMore'
-import ExpandLessIcon from './ExpandLess'
+import {
+  GpsIcon,
+  SearchIcon,
+  MenuIcon,
+  SettingsIcon,
+  PlaceIcon,
+  ExpandMoreIcon,
+  ExpandLessIcon
+} from '.'
 
-const stories = storiesOf('Icons', module)
+const stories = storiesOf('New Icons', module)
 stories.add('default', () => (
-  <div className="storyWrapper">
-    <div style={{ display: 'flex' }}>
-      <span style={{ padding: 12 }}>
-        <SearchIcon />
-      </span>
-      <span style={{ padding: 12 }}>
-        <GeolocationIcon />
-      </span>
-      <span style={{ padding: 12 }}>
-        <PlaceIcon />
-      </span>
-      <span style={{ padding: 12 }}>
-        <SettingsIcon />
-      </span>
-      <span style={{ padding: 12 }}>
-        <MenuIcon />
-      </span>
-      <span style={{ padding: 12 }}>
-        <ExpandMoreIcon />
-      </span>
-      <span style={{ padding: 12 }}>
-        <ExpandLessIcon />
-      </span>
+  <div
+    className="storyWrapper"
+    style={{ fontSize: 16, alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <GpsIcon className={styles.Bobby} />
+      <span>GPS Icon</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <SearchIcon />
+      <span>Search Icon</span>
+    </div>
+
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <MenuIcon />
+      <span>Menu Icon</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <SettingsIcon />
+      <span>Settings Icon</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <PlaceIcon />
+      <span>Place Icon</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <ExpandMoreIcon />
+      <span>Expand More Icon</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <ExpandLessIcon />
+      <span>Expand Less Icon</span>
+    </div>
+  </div>
+))
+stories.add('Align Left', () => (
+  <div
+    className="storyWrapper"
+    style={{ fontSize: 16, alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+      <Button>
+        <SettingsIcon size={22} />
+        <div style={{ marginTop: 0 }}>Settings</div>
+      </Button>
     </div>
   </div>
 ))
 
-stories.add('Custom size/color', () => (
-  <div className="storyWrapper">
-    <div style={{ display: 'flex' }}>
-      <span style={{ padding: 12 }}>
-        <GeolocationIcon size={40} color="#865CD6" />
-      </span>
-      <span style={{ padding: 12 }}>
-        <PlaceIcon size={40} color="#865CD6" />
-      </span>
-      <span style={{ padding: 12 }}>
-        <SettingsIcon size={40} color="#865CD6" />
-      </span>
-    </div>
-  </div>
-))
-
-stories.add('Custom Styles', () => (
-  <div className="storyWrapper">
-    <div style={{ display: 'flex' }}>
-      <GeolocationIcon size={40} color="#865CD6" style={{ margin: 50 }} />
-      <PlaceIcon size={40} color="#865CD6" style={{ margin: 50 }} />
-      <SettingsIcon size={40} color="#865CD6" style={{ margin: 50 }} />
-    </div>
-  </div>
-))
+const styles = StyleSheet.create({
+  Bobby: {
+    color: 'pink',
+    transform: 'scale(1)',
+    transition: 'all 1s',
+    ':hover': {
+      transform: 'scale(2)'
+    }
+  }
+})
