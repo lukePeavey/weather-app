@@ -54,10 +54,8 @@ stories.add('Align Left', () => (
     className="storyWrapper"
     style={{ fontSize: 16, alignItems: 'flex-start', justifyContent: 'flex-start' }}>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <Button>
-        <SettingsIcon size={22} />
-        <div style={{ marginTop: 0 }}>Settings</div>
-      </Button>
+      <SettingsIcon size={22} />
+      <div style={{ marginTop: 0 }}>Settings</div>
     </div>
   </div>
 ))
