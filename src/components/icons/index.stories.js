@@ -1,7 +1,5 @@
 import React from 'react'
-import Button from '../Button'
-import { StyleSheet, css } from 'aphrodite/no-important'
-
+import { withStyles } from 'material-ui/styles'
 import { storiesOf } from '@storybook/react'
 import {
   GpsIcon,
@@ -13,60 +11,49 @@ import {
   ExpandLessIcon
 } from '.'
 
-const stories = storiesOf('New Icons', module)
-stories.add('default', () => (
-  <div
-    className="storyWrapper"
-    style={{ fontSize: 16, alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+const styles = ({ palette, spacing }) => ({
+  container: {
+    fontSize: 16,
+    padding: spacing.unit * 3,
+    color: palette.grey[700]
+  },
+  icon: { marginRight: 10 }
+})
+
+const IconStories = ({ classes }) => (
+  <div className={classes.container}>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <GpsIcon className={styles.Bobby} />
+      <GpsIcon className={classes.icon} />
       <span>GPS Icon</span>
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <SearchIcon />
+      <SearchIcon className={classes.icon} />
       <span>Search Icon</span>
     </div>
 
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <MenuIcon />
+      <MenuIcon className={classes.icon} />
       <span>Menu Icon</span>
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <SettingsIcon />
+      <SettingsIcon className={classes.icon} />
       <span>Settings Icon</span>
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <PlaceIcon />
+      <PlaceIcon className={classes.icon} />
       <span>Place Icon</span>
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <ExpandMoreIcon />
+      <ExpandMoreIcon className={classes.icon} />
       <span>Expand More Icon</span>
     </div>
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <ExpandLessIcon />
+      <ExpandLessIcon className={classes.icon} />
       <span>Expand Less Icon</span>
     </div>
   </div>
-))
-stories.add('Align Left', () => (
-  <div
-    className="storyWrapper"
-    style={{ fontSize: 16, alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-      <SettingsIcon size={22} />
-      <div style={{ marginTop: 0 }}>Settings</div>
-    </div>
-  </div>
-))
+)
 
-const styles = StyleSheet.create({
-  Bobby: {
-    color: 'pink',
-    transform: 'scale(1)',
-    transition: 'all 1s',
-    ':hover': {
-      transform: 'scale(2)'
-    }
-  }
-})
+const WrapperIconStories = withStyles(styles)(IconStories)
+
+storiesOf('Icons', module).add('default', () => <WrapperIconStories />)

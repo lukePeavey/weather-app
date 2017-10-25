@@ -1,29 +1,38 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite/no-important'
+import { withStyles } from 'material-ui/styles'
+import classnames from 'classnames'
 
-/** A generic input component */
-const Input = ({ styles: customStyles, ...props }) => (
-  <input className={css(styles.input, customStyles)} {...props} />
-)
-
-const styles = StyleSheet.create({
-  input: {
-    display: 'block',
-    width: '100%',
-    border: 'none',
-    borderRadius: 0,
-    fontSize: '1rem',
-    lineHeight: '1.5',
-    boxShadow: 'none',
-    backgroundColor: 'transparent',
-    ':focus': {
-      outline: 'none'
-    },
-    '::placeholder': {
-      color: 'rgba(0,0,0,0.35)',
-      fontSize: 14
+const styles = ({ palette }) => {
+  const placeholder = {
+    color: palette.input.helperText,
+    fontSize: 14
+  }
+  return {
+    root: {
+      '-webkit-appearance': 'none',
+      display: 'block',
+      width: '100%',
+      fontSize: '1rem',
+      lineHeight: '1.5',
+      boxShadow: 'none',
+      backgroundColor: 'transparent',
+      boxShadow: 'none',
+      border: 'none',
+      borderRadius: 0,
+      '&::placeholder': placeholder,
+      '&:focus': {
+        outline: 'none',
+        border: 'none',
+        boxShadow: 'none',
+        backgroundColor: '#fff'
+      }
     }
   }
-})
+}
 
-export default Input
+/** A generic input component */
+const Input = ({ classes, className, ...props }) => (
+  <input className={classnames(classes.root, className)} {...props} />
+)
+
+export default withStyles(styles)(Input)

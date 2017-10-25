@@ -1,60 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, css } from 'aphrodite/no-important'
+import { withStyles } from 'material-ui/styles'
 import Input from '../Input'
 const inputTypes = ['text', 'email', 'password', 'url', 'tel', 'number', 'search']
 
-/** Basic text input component */
-export default class TextInput extends Component {
-  static propTypes = {
-    /** The input type */
-    type: PropTypes.oneOf(inputTypes).isRequired,
-    /** The label that will be displayed for the input */
-    label: PropTypes.string,
-    /** Input props passed to component by reduxForm  */
-    input: PropTypes.object,
-    /** Meta props passed to component by reduxForm */
-    meta: PropTypes.object
-  }
-
-  static defaultProps = {
-    type: 'text',
-    input: {}
-  }
-
-  state = {
-    focused: false
-  }
-
-  handleBlur = event => {
-    let { input } = this.props
-    this.setState({ focused: false })
-    if (input && input.onBlur) input.onBlur()
-  }
-
-  handleFocus = event => {
-    let { input } = this.props
-    this.setState({ focused: true })
-    if (input && input.onBlur) input.onBlur()
-  }
-
-  render() {
-    let { input, ...props } = this.props
-    return (
-      <div className={css(styles.field, this.state.focused && styles.focus)}>
-        <Input
-          {...props}
-          {...input}
-          styles={styles.input}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
-      </div>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
+const styles = {
   field: {
     height: 40,
     maxWidth: 450,
@@ -73,4 +23,39 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 0
   }
-})
+}
+
+/** Basic text input component */
+class TextInput extends Component {
+  static propTypes = {
+    /** The input type */
+    type: PropTypes.oneOf(inputTypes).isRequired,
+    /** The label that will be displayed for the input */
+    label: PropTypes.string,
+    /** Input props passed to component by reduxForm  */
+    input: PropTypes.object,
+    /** Meta props passed to component by reduxForm */
+    meta: PropTypes.object
+  }
+
+  static defaultProps = {
+    type: 'text',
+    input: {}
+  }
+
+  render() {
+    let { input, classes, ...props } = this.props
+    return (
+      <div className={classes.field}>
+        <Input
+          {...props}
+          {...input}
+          className={classes.input}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+        />
+      </div>
+    )
+  }
+}
+export default withStyles(styles)(TextInput)
