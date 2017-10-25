@@ -1,41 +1,60 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import { withStyles } from 'material-ui/styles'
+import classnames from 'classnames'
 import Input from '../Input'
-import SearchIcon from '../icons/Search'
+import { SearchIcon } from '../icons'
+
+const styles = ({ palette, spacing, breakpoints, transitions }) => ({
+  root: {
+    position: 'relative',
+    flex: '1 0 0',
+    height: spacing.unit * 5,
+    maxWidth: 500
+  },
+  input: {
+    height: 'inherit',
+    lineHeight: 'inherit',
+    width: '100%',
+    paddingLeft: spacing.unit * 7,
+    color: palette.input.inputText,
+    backgroundColor: 'rgba(255, 255, 255, 0.89)',
+    transitionDuration: transitions.duration.shortest,
+    transitionProperty: 'background-color'
+  },
+  icon: {
+    position: 'absolute',
+    top: 'calc(50% - 12px)',
+    right: spacing.unit,
+    color: 'rgba(0,0,0,0.2)'
+  },
+  [breakpoints.down('md')]: {
+    root: {
+      maxWidth: '100%'
+    }
+  }
+})
 
 /** Places (geo location) search bar */
 class SearchBar extends Component {
   render() {
+    const { classes, className, inputProps, children } = this.props
     const { placeholder } = this.props
     return (
-      <form action="" className={css(styles.searchBar)}>
-        <i className={css(styles.iconWrapper)}>
-          <SearchIcon size={22} />
-        </i>
-        <Input type="search" name="geoSearch" styles={styles.input} placeholder={placeholder} />
+      <form className={classnames(classes.root, className)}>
+        {children}
+        <Input
+          type="search"
+          name="geoSearch"
+          className={classes.input}
+          placeholder={'Search for city, state or zip'}
+          value="Wiscasset, Maine, 04578"
+          {...inputProps}
+        />
+        <SearchIcon className={classes.icon} tabIndex={0} />
       </form>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  searchBar: {
-    height: 40,
-    position: 'relative',
-    borderBottom: 'solid 1px rgba(0,0,0,0.1)',
-    backgroundColor: '#fff'
-  },
-  input: {
-    height: 40,
-    padding: '0 24px',
-    paddingLeft: 40
-  },
-  iconWrapper: {
-    position: 'absolute',
-    left: 10,
-    top: 9,
-    zIndex: 2
-  }
-})
-
-export default SearchBar
+export default withStyles(styles)(SearchBar)
