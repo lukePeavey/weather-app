@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, css } from 'aphrodite/no-important'
+import { withStyles } from 'material-ui/styles'
+import classNames from 'classnames'
 
 const propTypes = {
   /** The color of the loading dots */
@@ -21,24 +22,23 @@ const defaultProps = {
  * loading indicator in several UI components like the search bar's
  * autocomplete dropdown. The size and color of the dots can be set via props.
  */
-const LoadingDots = ({ size, color, styles: customStyles }) => {
+const LoadingDots = ({ size, color, className, ...props }) => {
   let dotSize = { height: size, width: size, margin: `0 ${size * (0.875 / 2)}px` }
   let dotStyle = { ...dotSize, background: color }
   return (
-    <div className={css(styles.loadingDots, customStyles)}>
-      <div className={css(styles.dot)} style={dotStyle} />
-      <div className={css(styles.dot)} style={dotStyle} />
-      <div className={css(styles.dot)} style={dotStyle} />
+    <div className={classNames(classes.loadingDots, className)} {...props}>
+      <div className={classes.dot} style={dotStyle} />
+      <div className={classes.dot} style={dotStyle} />
+      <div className={classes.dot} style={dotStyle} />
     </div>
   )
 }
 
-const bounceKeyframe = {
-  '0%, 80%, 100%': { transform: 'scale(0)', opacity: 0.35 },
-  '40%': { transform: 'scale(1)', opacity: 1 }
-}
-
-const styles = StyleSheet.create({
+const styles = {
+  '@keyframe bounce': {
+    '0%, 80%, 100%': { transform: 'scale(0)', opacity: 0.35 },
+    '40%': { transform: 'scale(1)', opacity: 1 }
+  },
   loadingDots: {
     display: 'inline-block'
   },
@@ -46,20 +46,20 @@ const styles = StyleSheet.create({
     display: 'inline-block',
     position: 'relative',
     borderRadius: '100%',
-    animationName: [bounceKeyframe],
+    animationName: 'bounce',
     animationDuration: '1.4s',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
-    ':nth-child(1)': {
+    '&:nth-child(1)': {
       animationDelay: '-0.32s'
     },
-    ':nth-child(2)': {
+    '&:nth-child(2)': {
       animationDelay: '-0.16s'
     }
   }
-})
+}
 
 LoadingDots.propTypes = propTypes
 LoadingDots.defaultProps = defaultProps
 
-export default LoadingDots
+export default withStyles(styles)(LoadingDots)
