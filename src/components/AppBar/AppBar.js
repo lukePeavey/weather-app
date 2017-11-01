@@ -2,10 +2,57 @@ import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import NavBar from 'material-ui/AppBar'
 import Tabs, { Tab } from 'material-ui/Tabs'
-import IconButton from 'material-ui/IconButton'
-import { MenuIcon } from '../icons'
-import SearchBar from '../SearchBar'
+import MenuButton from './MenuButton'
+import NavDrawer from '../../components/NavDrawer'
+import PlacesMenu from '../../containers/PlacesMenu'
 
+/**
+ * the AppBar contains top-level navigation and UI controls for the app.
+ */
+const AppBar = ({
+  classes,
+  navDrawerOpen,
+  toggleNavDrawer,
+  placesMenuActive,
+  togglePlacesMenu,
+  handleTabChange,
+  activeTab = 0,
+  tabs = [],
+  settings,
+  changeSetting,
+  logout,
+  user
+}) => [
+  <NavDrawer
+    open={navDrawerOpen}
+    toggleNavDrawer={toggleNavDrawer}
+    user={user}
+    settings={settings}
+    changeSetting={changeSetting}
+    logout={logout}
+    key={'drawer'}
+  />,
+  <NavBar position="fixed" color="primary" className={classes.root} key={'navBar'}>
+    <div className={classes.toolBar}>
+      <MenuButton
+        toggleNavDrawer={toggleNavDrawer}
+        togglePlacesMenu={toggleNavDrawer}
+        placesMenuActive={placesMenuActive}
+        className={classes.menuIcon}
+      />
+      <PlacesMenu togglePlacesMenu={togglePlacesMenu} isActive={placesMenuActive} />
+      <Tabs
+        className={classes.tabs}
+        value={activeTab}
+        onChange={handleTabChange}
+        indicatorColor="#fff">
+        {tabs.map((tab, i) => <Tab key={i} className={classes.tab} label={tab.label} />)}
+      </Tabs>
+    </div>
+  </NavBar>
+]
+
+/** AppBar styles */
 const styles = ({ palette, spacing, breakpoints, transitions }) => ({
   root: {},
   toolBar: {
@@ -16,7 +63,8 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
   },
   tabs: {
     marginLeft: 'auto',
-    minHeight: spacing.unit * 8
+    minHeight: spacing.unit * 8,
+    zIndex: 1
   },
   tab: {
     height: spacing.unit * 8
@@ -26,7 +74,8 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
     position: 'absolute',
     top: spacing.unit, // 16px
     left: spacing.unit * 2, // 8px
-    color: '#333'
+    color: '#000',
+    opacity: 0.7
   },
   [breakpoints.down('md')]: {
     root: {},
@@ -49,28 +98,5 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
     }
   }
 })
-
-class AppBar extends Component {
-  render() {
-    const { classes, activeTab = 0, handleTabChange, tabs = [] } = this.props
-    return (
-      <NavBar position="fixed" color="primary" className={classes.root}>
-        <div className={classes.toolBar}>
-          <IconButton className={classes.menuIcon} aria-label="Menu" color="inherit">
-            <MenuIcon />
-          </IconButton>
-          <SearchBar value="Astoria, New York, US" className={classes.searchBar} />
-          <Tabs
-            className={classes.tabs}
-            value={activeTab}
-            onChange={handleTabChange}
-            indicatorColor="#fff">
-            {tabs.map(view => <Tab className={classes.tab} label={view.label} />)}
-          </Tabs>
-        </div>
-      </NavBar>
-    )
-  }
-}
 
 export default withStyles(styles)(AppBar)
