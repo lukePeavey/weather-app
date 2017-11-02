@@ -6,9 +6,9 @@ export const loginRequest = ({ credentials, resolve, reject }) => ({
   payload: { credentials, resolve, reject }
 })
 
-export const loginSuccess = token => ({
+export const loginSuccess = ({ token, user }) => ({
   type: types.LOGIN_SUCCESS,
-  payload: { token }
+  payload: { token, user }
 })
 
 export const loginFail = error => ({
@@ -17,17 +17,8 @@ export const loginFail = error => ({
 })
 
 /** Logout action */
-export const logoutRequest = () => ({
-  type: types.LOGOUT_REQUEST
-})
-
-export const logoutSuccess = () => ({
-  type: types.LOGOUT_SUCCESS
-})
-
-export const logoutFail = error => ({
-  type: types.LOGOUT_FAIL,
-  payload: { error }
+export const logout = () => ({
+  type: types.LOGOUT
 })
 
 /** Signup actions */

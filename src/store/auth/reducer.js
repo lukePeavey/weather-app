@@ -1,6 +1,8 @@
 import * as types from './constants'
 
 const initialState = {
+  /** Will be set to true while login request is in progress */
+  isRequesting: false,
   /** Will be set to true if user has successfully logged in  */
   isAuthenticated: false,
   /** The authenticated user object, contains basic user profile info */
@@ -20,20 +22,23 @@ export const authReducer = (state = initialState, action) => {
       return { ...state, isRequesting: true, isAuthenticated: false, token: null }
 
     case types.LOGIN_SUCCESS:
-      return { ...state, isRequesting: false, isAuthenticated: true, token: payload.token }
+      return {
+        ...state,
+        isRequesting: false,
+        isAuthenticated: true,
+        user: payload.user,
+        token: payload.token
+      }
 
     case types.LOGIN_FAIL:
       return { ...state, isRequesting: false, isAuthenticated: false, token: null }
 
-    case types.LOGOUT_SUCCESS:
+    case types.LOGOUT:
       return { ...initialState }
 
-    case types.FETCH_USER_REQUEST:
-      return { ...state, user: null }
-
     case types.FETCH_USER_SUCCESS:
-      const { fullName, email, savedLocations, settings } = payload.user
       return { ...state, user: payload.user }
+
     default:
       return state
   }

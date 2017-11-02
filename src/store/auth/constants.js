@@ -1,16 +1,13 @@
-import config from '../../config'
 const MODULE_NAMESPACE = 'auth'
-const type = actionName => `${config.NAMESPACE}/${MODULE_NAMESPACE}/${actionName}`
+const type = actionName => `${MODULE_NAMESPACE}/${actionName}`
 
 // Login actions
 export const LOGIN_REQUEST = type('LOGIN_REQUEST')
 export const LOGIN_SUCCESS = type('LOGIN_SUCCESS')
 export const LOGIN_FAIL = type('LOGIN_FAIL')
 
-// Login actions
-export const LOGOUT_REQUEST = type('LOGOUT_REQUEST')
-export const LOGOUT_SUCCESS = type('LOGOUT_SUCCESS')
-export const LOGOUT_FAIL = type('LOGOUT_FAIL')
+// Logout
+export const LOGOUT = 'LOGOUT'
 
 // Registration actions
 export const SIGNUP_REQUEST = type('SIGNUP_REQUEST')
