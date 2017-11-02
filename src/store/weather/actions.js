@@ -1,65 +1,61 @@
 import * as types from './constants'
 
-/** Fetch current weather for the specified location */
-export const fetchCurrentWeatherRequest = placeid => ({
-  type: types.FETCH_CURRENT_WEATHER_REQUEST,
-  payload: { placeid }
+export const setWeatherView = index => ({
+  type: types.SET_WEATHER_VIEW,
+  payload: { index }
+})
+/** Fetch weather data for a single location */
+export const fetchWeatherRequest = place => ({
+  type: types.FETCH_WEATHER_REQUEST,
+  payload: { place }
 })
 
-export const fetchCurrentWeatherSuccess = (conditions, placeid) => ({
-  type: types.FETCH_CURRENT_WEATHER_SUCCESS,
-  payload: { conditions, placeid }
+export const fetchWeatherSuccess = (weather, placeid) => ({
+  type: types.FETCH_WEATHER_SUCCESS,
+  payload: { weather, placeid }
 })
 
-export const fetchCurrentWeatherFail = error => ({
-  type: types.FETCH_CURRENT_WEATHER_FAIL,
+export const fetchWeatherFail = error => ({
+  type: types.FETCH_WEATHER_FAIL,
   payload: { error }
 })
 
-/** Fetch daily forecast for the specified location */
-export const fetchDailyWeatherRequest = placeid => ({
-  type: types.FETCH_CURRENT_WEATHER_REQUEST,
-  payload: { placeid }
+/** Fetch hourly forecast data for a single location */
+export const fetchHourlyForecastRequest = place => ({
+  type: types.FETCH_HOURLY_FORECAST_REQUEST,
+  payload: { place }
 })
 
-export const fetchDailyWeatherSuccess = days => ({
-  type: types.FETCH_CURRENT_WEATHER_SUCCESS,
-  payload: { days }
+export const fetchHourlyForecastSuccess = (weather, placeid) => ({
+  type: types.FETCH_HOURLY_FORECAST_SUCCESS,
+  payload: { weather, placeid }
 })
 
-export const fetchDailyWeatherFail = error => ({
-  type: types.FETCH_CURRENT_WEATHER_FAIL,
+export const fetchHourlyForecastFail = error => ({
+  type: types.FETCH_HOURLY_FORECAST_FAIL,
   payload: { error }
 })
 
-/** Fetch hourly forecast for the specified location */
-export const fetchHourlyWeatherRequest = placeid => ({
-  type: types.FETCH_CURRENT_WEATHER_REQUEST,
-  payload: { placeid }
-})
-
-export const fetchHourlyWeatherSuccess = hours => ({
-  type: types.FETCH_CURRENT_WEATHER_SUCCESS,
-  payload: { hours }
-})
-
-export const fetchHourlyWeatherFail = error => ({
-  type: types.FETCH_CURRENT_WEATHER_FAIL,
-  payload: { error }
-})
-
-/** Fetch current weather for the user's saved locations */
+/** Fetch weather data for the user's saved location's */
 export const fetchWeatherForSavedPlacesRequest = places => ({
-  type: types.FETCH_WEATHER_FOR_SAVED_PLACES_REQUEST,
+  type: types.WEATHER_FOR_SAVED_PLACES_REQUEST,
   payload: { places }
 })
-
-export const fetchWeatherForSavedPlacesSuccess = weather => ({
-  type: types.FETCH_WEATHER_FOR_SAVED_PLACES_SUCCESS,
-  payload: { weather }
+export const fetchWeatherForSavedPlacesSuccess = places => ({
+  type: types.WEATHER_FOR_SAVED_PLACES_SUCCESS
+})
+export const fetchWeatherForSavedPlacesFail = places => ({
+  type: types.WEATHER_FOR_SAVED_PLACES_FAIL
 })
 
-export const fetchWeatherForSavedPlacesFail = error => ({
-  type: types.FETCH_WEATHER_FOR_SAVED_PLACES_FAIL,
-  payload: { error }
+/** Fetch weather data for the currently displayed location */
+export const fetchWeatherForActivePlaceRequest = place => ({
+  type: types.WEATHER_FOR_ACTIVE_PLACE_REQUEST,
+  payload: { place }
+})
+export const fetchWeatherForActivePlaceSuccess = () => ({
+  type: types.WEATHER_FOR_ACTIVE_PLACE_SUCCESS
+})
+export const fetchWeatherForActivePlaceFail = () => ({
+  type: types.WEATHER_FOR_ACTIVE_PLACE_FAIL
 })

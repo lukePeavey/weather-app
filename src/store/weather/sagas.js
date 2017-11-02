@@ -1,50 +1,89 @@
-import { takeEvery, takeLatest, put, call, all, select } from 'redux-saga/effects'
-import { SubmissionError } from 'redux-form'
-import { get, values, fromPairs } from 'lodash'
-
+import { takeEvery, takeLatest, put, call, all, select, delay } from 'redux-saga/effects'
+import get from 'lodash/get'
+import toPairs from 'lodash/toPairs'
+import isEmpty from 'lodash/isEmpty'
+import values from 'lodash/values'
 import api from '../../utils/api'
 import * as actions from './actions'
 import * as types from './constants'
 import * as fromState from '../selectors'
 
 /**
- * Handles fetching current weather
+ * Fetches weather data for a single location and stores it in state.
+ * See weather reducer for details on how weather data is stored. This
+ * saga is used internally to fetch weather for the active location and
+ * the user's saved locations.
+ *
+ * @param {Object} place - a place object returned by Google Places API
  */
-function* fetchCurrentWeather({ payload: { placeid } }) {
+function* fetchWeather(place) {
+  const placeid = get(place, 'place_id', '')
+  const coords = place ? values(place.location).join(',') : 'auto'
+  let params = {}
   try {
-    let weather = yield call(api.get, `/weather/current/${placeid}`)
-    yield put(actions.fetchCurrentWeatherSuccess(weather, placeid))
+    if (isEmpty(yield select(fromState.getCurrentWeather, placeid))) {
+      yield put(actions.fetchWeatherRequest())
+      // Fetch current weather and daily forecast first
+      params = { features: 'conditions,forecast10day', place: coords }
+      const { current, days } = yield call(api.get, '/weather', params)
+      yield put(actions.fetchWeatherSuccess({ current, days }, placeid))
+      // Once initial weather has been fetched and added to the state,
+      // fetch the hourly weather forecast data.
+      yield put(actions.fetchHourlyForecastRequest())
+      params = { features: 'hourly10day', place: coords }
+      const { hours } = yield call(api.get, '/weather', params)
+      yield put(actions.fetchHourlyForecastSuccess({ hours }, placeid))
+    }
   } catch (error) {
-    yield put(actions.fetchCurrentWeatherFail())
+    yield put(actions.fetchWeatherFail)
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
   }
 }
 
 /**
- * Handles fetching current weather for the user's saved locations
+ * Fetches complete weather data for the user's saved locations. This
+ * is used to display current temp/weather icon for saved locations
+ * in the locations dropdown (PlacesMenu). It will also be used to
+ * display the weather for those locations when selected
+ *
+ * @param {Object} payload
+ * @param {Array} payload.places - an array of place objects (Google Places API)
  */
-function* fetchWeatherForSavedPlaces({ payload: { places } }) {
+function* weatherForSavedPlaces({ payload: { places } }) {
   try {
-    // Fetch the current weather conditions for each of the user's saved places.
-    // This yields an array of current weather objects
-    let weather = yield all(
-      places.map(({ location: { lat, lng } }) => call(api.get, `/weather/current/${lat},${lng}`))
-    )
-    // Convert the array of weather objects to an array of key-value pairs,
-    // where each key is the placeid and the value is the object with the weather
-    // conditions for that location. The weather for these locations will be
-    // added to the redux store.
-    let weatherObject = fromPairs(weather.map((weather, i) => [places[i].place_id, weather]))
-    yield put(actions.fetchWeatherForSavedPlacesSuccess(weatherObject))
+    yield all(places.map(place => call(fetchWeather, place)))
+    yield put({ type: types.WEATHER_FOR_SAVED_PLACES_SUCCESS })
   } catch (error) {
-    yield put(actions.fetchWeatherForSavedPlacesFail())
+    yield put({ type: types.WEATHER_FOR_SAVED_PLACES_FAIL })
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
   }
 }
 
-// @todo add saga to handle fetching daily forecast
-
-// @todo add saga to handle fetching hourly forecast
+/**
+ * Fetch complete weather data for the currently active location.
+ *
+ * @param {Object} payload
+ * @param {Object} place a place object from the Google Places API
+ */
+function* weatherForActivePlace({ payload: { place } }) {
+  try {
+    yield call(fetchWeather, place)
+    yield put({ type: types.WEATHER_FOR_ACTIVE_PLACE_SUCCESS })
+  } catch (error) {
+    yield put({ type: types.WEATHER_FOR_ACTIVE_PLACE_FAIL })
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
+  }
+}
 
 export default function* watcherSaga() {
-  yield all([takeEvery(types.FETCH_CURRENT_WEATHER_REQUEST, fetchCurrentWeather)])
-  yield all([takeEvery(types.FETCH_WEATHER_FOR_SAVED_PLACES_REQUEST, fetchWeatherForSavedPlaces)])
+  yield all([
+    takeLatest(types.WEATHER_FOR_ACTIVE_PLACE_REQUEST, weatherForActivePlace),
+    takeLatest(types.WEATHER_FOR_SAVED_PLACES_REQUEST, weatherForSavedPlaces)
+  ])
 }
