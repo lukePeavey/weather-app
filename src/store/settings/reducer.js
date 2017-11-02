@@ -1,10 +1,8 @@
 import * as types from './constants'
 
 const initialState = {
-  /** Currently the only setting is for unit, could add more later */
-  settings: {
-    unit: 'fahrenheit'
-  }
+  unit: 'fahrenheit',
+  enableAlerts: false
 }
 
 export const settingsReducer = (state = initialState, action) => {
@@ -14,7 +12,7 @@ export const settingsReducer = (state = initialState, action) => {
     case types.FETCH_SETTINGS_SUCCESS:
       return { ...payload.settings }
 
-    case types.UPDATE_SETTING_SUCCESS:
+    case types.CHANGE_SETTING:
       return {
         ...state,
         [payload.name]: payload.value
