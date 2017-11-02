@@ -1,29 +1,13 @@
 import * as types from './constants'
 
-/** Toggles the places menu */
-export const openPlacesMenu = () => ({
-  type: types.OPEN_PLACES_MENU
-})
-/** Close the places menu */
-export const closePlacesMenu = () => ({
-  type: types.CLOSE_PLACES_MENU
-})
-
-/** Sets the value of the places search bar input */
-export const setSearchValue = value => ({
-  type: types.SET_SEARCH_VALUE,
-  payload: { value }
-})
-
-/** Sets the active autocomplete suggestion for places search bar */
-export const setActiveSuggestion = index => ({
-  type: types.SET_ACTIVE_SUGGESTION,
-  payload: { index }
-})
+// @todo - The UI state for the places menu and search bar (visibility, search
+// input value, autocomplete suggestions, active suggestion, etc) could really
+// be handled with local component state instead of redux. This state is not
+// shared with any other components outside of the places menu.
 
 /** Resets the search bar to init state */
-export const resetSearchBar = () => ({
-  type: types.RESET_SEARCH_BAR
+export const clearSearchSuggestions = () => ({
+  type: types.CLEAR_SEARCH_SUGGESTIONS
 })
 
 /** Fetch autocomplete actions  */
@@ -89,7 +73,21 @@ export const removeSavedPlaceFail = error => ({
   payload: { error }
 })
 
-/** Sets the active place for feather forecast */
+export const fetchPlaceDetailsRequest = (placeid, name = '') => ({
+  type: types.FETCH_PLACE_DETAILS_REQUEST,
+  payload: { placeid, name }
+})
+
+export const fetchPlaceDetailsSuccess = place => ({
+  type: types.FETCH_PLACE_DETAILS_SUCCESS,
+  payload: { place }
+})
+
+export const selectLocation = (name, placeid) => ({
+  type: types.SELECT_LOCATION,
+  payload: { name, placeid }
+})
+
 export const setActivePlace = placeid => ({
   type: types.SET_ACTIVE_PLACE,
   payload: { placeid }
