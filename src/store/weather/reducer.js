@@ -66,7 +66,7 @@ export const weatherReducer = (state = initialState, action) => {
     // currently displayed location. See weather sagas for more details
     case types.WEATHER_FOR_ACTIVE_PLACE_REQUEST:
       return { ...state, fetchingWeather: true }
-    // Set isFetching to false when this action completes succesffuly.
+    // Set isFetching to false when this action completes successfully.
     case types.WEATHER_FOR_ACTIVE_PLACE_SUCCESS:
       return { ...state, fetchingWeather: false }
 

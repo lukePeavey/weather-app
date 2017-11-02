@@ -48,7 +48,7 @@ function* authenticate({ credentials, resolve, reject }) {
 
 /**
  * This is watcher saga that uses lower level methods like take and fork to
- * implement the login flow. It handles the entire cylce of login -> logout
+ * implement the login flow. It handles the entire cycle of login -> logout
  * in a single function. Its loosely based on an example from saga's official
  * documentation.
  */
