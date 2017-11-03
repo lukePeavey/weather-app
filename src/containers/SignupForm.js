@@ -6,8 +6,22 @@ import { Redirect } from 'react-router-dom'
 import SignupForm from '../components/SignupForm'
 import { signupRequest } from '../store/auth/actions'
 
+/**
+ * Container for the the SignupForm component (user registration form)
+ * Same setup as the login form: form state is managed with redux-form.
+ * The container provides event handlers for form submission etc.
+ *
+ * @todo Add field level validation
+ */
 class SignupFormContainer extends Component {
-  mySubmit = data => {
+  /**
+   * onSubmit handler for the signup form.
+   * This dispatches the signupRequest action when the form is submitted,
+   * passing it the form data and resolve/reject callbacks as the payload.
+   * The signup saga will handle the actual registration process. The
+   * onSubmit handler will wait for the saga to resolve/reject.
+   */
+  onSubmit = data => {
     return new Promise((resolve, reject) => {
       this.props.dispatch(signupRequest({ data, resolve, reject }))
     })
@@ -15,9 +29,10 @@ class SignupFormContainer extends Component {
 
   render() {
     if (this.props.submitSucceeded) {
-      return <Redirect to="/login" />
+      // If form submission completes successfully, redirect user to login page.
+      return <Redirect to="/auth/login" />
     }
-    return <SignupForm {...this.props} mySubmit={this.mySubmit} />
+    return <SignupForm onSubmit={this.onSubmit} {...this.props} />
   }
 }
 
