@@ -5,8 +5,9 @@ import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers'
 import rootSaga from './sagas'
 
+export const history = createHistory()
+
 export default function configureStore(initialState = {}) {
-  const history = createHistory()
   const enhancers = []
   const sagaMiddleware = createSagaMiddleware()
   const middleware = [sagaMiddleware, routerMiddleware(history)]
@@ -21,5 +22,5 @@ export default function configureStore(initialState = {}) {
   const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers)
   const store = createStore(rootReducer, initialState, composedEnhancers)
   sagaMiddleware.run(rootSaga)
-  return { store, history }
+  return store
 }
