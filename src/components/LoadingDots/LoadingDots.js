@@ -22,11 +22,11 @@ const defaultProps = {
  * loading indicator in several UI components like the search bar's
  * autocomplete dropdown. The size and color of the dots can be set via props.
  */
-const LoadingDots = ({ size, color, className, ...props }) => {
+const LoadingDots = ({ size, color, className, classes, ...props }) => {
   let dotSize = { height: size, width: size, margin: `0 ${size * (0.875 / 2)}px` }
   let dotStyle = { ...dotSize, background: color }
   return (
-    <div className={classNames(classes.loadingDots, className)} {...props}>
+    <div className={classNames(classes.root, className)} {...props}>
       <div className={classes.dot} style={dotStyle} />
       <div className={classes.dot} style={dotStyle} />
       <div className={classes.dot} style={dotStyle} />
@@ -35,11 +35,11 @@ const LoadingDots = ({ size, color, className, ...props }) => {
 }
 
 const styles = {
-  '@keyframe bounce': {
+  '@keyframes bounce': {
     '0%, 80%, 100%': { transform: 'scale(0)', opacity: 0.35 },
     '40%': { transform: 'scale(1)', opacity: 1 }
   },
-  loadingDots: {
+  root: {
     display: 'inline-block'
   },
   dot: {
