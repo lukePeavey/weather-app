@@ -1,39 +1,22 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import classnames from 'classnames'
-import get from 'lodash/get'
-import moment from 'moment'
-import { getIconName } from '../../utils/weatherUtils'
-import WeatherIcon from '../WeatherIcon'
 import { GpsIcon } from '../icons'
+import SavedPlace from '../../containers/SavedPlace'
 
 /** A list of saved places for the current user */
-const SavedPlaces = ({ places = [], handleSelect, classes }) => {
+const SavedPlaces = ({ placeIds = [], handleSelect, classes }) => {
   const UserGeoLocation = () => (
-    <button className={classnames(classes.place, classes.geoLocation)}>
+    <button className={classnames(classes.place, classes.geoLocation)} onClick={handleSelect}>
       <GpsIcon className={classes.geoIcon} />
       <span>Use my location</span>
     </button>
   )
   return [
     <UserGeoLocation key="geolocation" />,
-    ...places.map(({ place: { formatted_address, place_id }, weather = {} }) => {
-      const time = get(weather, 'local_time_rfc822')
-      return (
-        <button className={classes.place} key={place_id} onClick={() => handleSelect(place_id)}>
-          <div className={classes.details}>
-            <div className={classes.name}>{formatted_address}</div>
-            <div className={classes.time}>
-              {time ? moment.parseZone(time).format('hh:mm a') : ''}
-            </div>
-          </div>
-          <div className={classes.currentTemp}>{Math.round(weather.temp_f)}&deg;</div>
-          <div className={classes.weatherIcon}>
-            <WeatherIcon name={getIconName(weather)} />
-          </div>
-        </button>
-      )
-    })
+    ...placeIds.map(id => (
+      <SavedPlace id={id} classes={classes} key={id} handleSelect={handleSelect} />
+    ))
   ]
 }
 
