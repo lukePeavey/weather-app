@@ -4,8 +4,6 @@ import { fetchWeather } from '../weather/sagas'
 import * as types from './constants'
 import * as actions from './actions'
 import * as weatherActions from '../weather/actions'
-import * as notifications from '../notifications/actions'
-import { getShortName } from '../../utils/placeUtils'
 import { fetchPlaceDetails } from '../places/sagas'
 import * as fromState from '../selectors'
 
@@ -18,9 +16,7 @@ function* fetchSavedPlaces() {
       // yield all(places.map(place => put(weatherActions.fetchCurrentWeatherRequest(place))))
     }
   } catch (error) {
-    console.group('Fetch Saved Places Saga')
-    console.error(error)
-    console.groupEnd()
+    yield put(actions.fetchSavedPlacesFail())
   }
 }
 
@@ -35,11 +31,6 @@ function* addSavedPlace() {
     if (place_id && location) {
       yield call(api.post, '/user/places', { place_id, location })
       yield put(actions.addSavedPlaceSuccess())
-      yield put(
-        notifications.addNotification({
-          message: `Added ${getShortName(place)} to saved locations`
-        })
-      )
       yield call(fetchSavedPlaces)
     }
   } catch (error) {
