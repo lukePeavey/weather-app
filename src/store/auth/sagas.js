@@ -13,7 +13,6 @@ import { SubmissionError } from 'redux-form'
 import api from '../../utils/api'
 import get from 'lodash/get'
 import * as fromState from '../selectors'
-import * as settingsActions from '../settings/actions'
 import * as notificationActions from '../notifications/actions'
 import * as actions from './actions'
 import * as types from './constants'
@@ -122,7 +121,6 @@ function* fetchUser() {
     let user = yield select(fromState.getAuthenticatedUser)
     if (!user) user = yield call(api.get, '/user')
     yield put(actions.fetchUserSuccess(user))
-    yield put(settingsActions.fetchSettingsRequest())
   } catch (error) {
     yield put(actions.fetchUserFail())
   }

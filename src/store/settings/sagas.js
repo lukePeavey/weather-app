@@ -34,10 +34,10 @@ function* saveSettings({ payload: { name, value } }) {
  * Fetch the user's saved settings (if logged in)
  */
 function* fetchSettings() {
-  const user = yield select(fromState.getAuthenticatedUser)
-  if (user) {
-    yield put(actions.fetchSettingsSuccess(user.settings))
-  }
+  try {
+    const settings = yield call(api.get, '/user/settings')
+    yield put(actions.fetchSettingsSuccess(settings))
+  } catch (error) {}
 }
 
 export default function* watcherSaga() {
