@@ -57,17 +57,19 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
   root: {},
   toolBar: {
     display: 'flex',
-    flexWrap: 'nowrap',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    marginLeft: spacing.unit * 2
+    margin: spacing.unit,
+    marginBottom: 0
   },
   tabs: {
-    marginLeft: 'auto',
-    minHeight: spacing.unit * 8,
+    minWidth: '100%',
+    minHeight: spacing.unit * 6,
     zIndex: 1
   },
   tab: {
-    height: spacing.unit * 8
+    flex: '1 0 0',
+    height: spacing.unit * 6
   },
   menuIcon: {
     zIndex: '999',
@@ -75,26 +77,30 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
     top: spacing.unit, // 16px
     left: spacing.unit * 2, // 8px
     color: '#000',
-    opacity: 0.7
+    opacity: 0.7,
+    width: spacing.unit * 5,
+    height: spacing.unit * 5
   },
-  [breakpoints.down('md')]: {
+  [breakpoints.up('md')]: {
     root: {},
     toolBar: {
-      flexWrap: 'wrap',
-      margin: spacing.unit,
-      marginBottom: 0
+      flexWrap: 'nowrap',
+      marginLeft: spacing.unit * 2
     },
     tabs: {
-      minWidth: '100%',
-      minHeight: spacing.unit * 6
+      minWidth: 0,
+      position: 'relative',
+      marginLeft: 'auto',
+      minHeight: spacing.unit * 8
     },
     tab: {
-      flex: '1 0 0',
-      height: spacing.unit * 6
+      height: spacing.unit * 8,
+      maxWidth: '33%',
+      flex: '1 0 33%'
     },
     menuIcon: {
-      width: spacing.unit * 5,
-      height: spacing.unit * 5
+      top: spacing.unit * 2.5,
+      left: spacing.unit * 2
     }
   }
 })
