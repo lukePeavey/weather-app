@@ -120,3 +120,140 @@ export const SendIcon = props => (
     </svg>
   </Icon>
 )
+
+/** Add Place icon */
+export const AddPlaceIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm4 8h-3v3h-2v-3H8V8h3V5h2v3h3v2z" />
+    </svg>
+  </Icon>
+)
+
+/** Add icon */
+export const AddIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+
+/** Add icon */
+export const AddCircleIcon = props => (
+  <svg height="24" viewBox="0 0 24 24" width="24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+  </svg>
+)
+
+/** Clear icon */
+export const ClearIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+
+/** Account icon */
+export const AccountIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+
+/** Add Account icon */
+export const AddAccountIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+    </svg>
+  </Icon>
+)
+
+/** Account Circle Icon */
+export const AccountCircleIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+
+/** Forward Arrow */
+export const ArrowForwardIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+    </svg>
+  </Icon>
+)
+
+/** Back Arrow*/
+export const ArrowBackIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+    </svg>
+  </Icon>
+)
+/** Long Back Arrow */
+
+export const KeyboardArrowBackIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z" />
+    </svg>
+  </Icon>
+)
+
+/** Edit Icon */
+export const EditIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+
+/** Drop Down Icon */
+export const DropDownIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M7 10l5 5 5-5z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+
+/** Drop Up Icon */
+export const DropUpIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M7 14l5-5 5 5z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
+/** Drop Up Icon */
+export const FilterListIcon = props => (
+  <Icon {...props}>
+    <svg height="24" viewBox="0 0 24 24" width="24">
+      <path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </Icon>
+)
