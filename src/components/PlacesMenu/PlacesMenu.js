@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import isEmpty from 'lodash/isEmpty'
-import SearchBar from './SearchBar'
-import Suggestions from './SearchSuggestions'
-import SavedPlaces from './SavedPlaces'
+import SearchBar from '../../containers/SearchBar'
+import SearchSuggestions from '../../containers/SearchSuggestions'
+import SavedPlaces from '../../containers/SavedPlacesList'
 import Dropdown from './Dropdown'
 
 /**
@@ -12,34 +13,33 @@ import Dropdown from './Dropdown'
  * the weather forecast. See PlaceMenuContainer for more details.
  */
 class PlacesMenu extends Component {
+  static propTypes = {
+    searchValue: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    handleSelect: PropTypes.func.isRequired
+  }
   render() {
     const {
-      currentPlace,
       handleClick,
       isActive,
-      searchValue,
-      searchSuggestions = [],
       savedPlaces,
       handleSelect,
+      searchValue,
       classes,
       handleInputChange,
       getElementRef,
+      getSearchBarRef,
       ...props
     } = this.props
     return (
       <div className={classes.root} onClick={handleClick} ref={getElementRef}>
-        <SearchBar
-          inputProps={{
-            onChange: handleInputChange,
-            value: isActive ? searchValue : currentPlace
-          }}
-        />
+        <SearchBar getSearchBarRef={getSearchBarRef} isActive={isActive} />
         <Dropdown open={isActive}>
           <div className={classes.list}>
             {isEmpty(searchValue) ? (
-              <SavedPlaces places={savedPlaces} handleSelect={handleSelect} />
+              <SavedPlaces handleSelect={handleSelect} />
             ) : (
-              <Suggestions suggestions={searchSuggestions} handleSelect={handleSelect} />
+              <SearchSuggestions handleSelect={handleSelect} />
             )}
           </div>
         </Dropdown>
@@ -52,10 +52,11 @@ const styles = ({ spacing, breakpoints }) => ({
   root: {
     zIndex: 99,
     position: 'relative',
-    maxWidth: 500,
+    width: '100%',
     height: spacing.unit * 5,
     flex: '1 0 auto',
-    [breakpoints.down('up')]: {
+    [breakpoints.up('md')]: {
+      maxWidth: 500,
       marginRight: spacing.unit * 7
     }
   },
