@@ -14,11 +14,11 @@ import {
 
 class Account extends Component {
   render() {
-    const { classes, user, logout, toggleNavDrawer } = this.props
+    const { classes, user, logout, toggleNavDrawer, addSavedLocation } = this.props
     if (user)
       return (
         <List subheader={<ListSubheader>My Weather</ListSubheader>} className={classes.list}>
-          <ListItem button>
+          <ListItem button onClick={addSavedLocation}>
             <ListItemIcon>
               <AddPlaceIcon />
             </ListItemIcon>

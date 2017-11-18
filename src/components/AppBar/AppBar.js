@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles'
 import NavBar from 'material-ui/AppBar'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import MenuButton from './MenuButton'
-import NavDrawer from '../../components/NavDrawer'
+import NavDrawer from '../../containers/NavDrawer'
 import PlacesMenu from '../../containers/PlacesMenu'
 
 /**

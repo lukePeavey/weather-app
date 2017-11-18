@@ -10,7 +10,15 @@ import { AccountIcon, AccountCircleIcon, DropDownIcon, AddPlaceIcon } from '../i
 import Settings from './Settings'
 import Account from './Account'
 
-const NavDrawer = ({ open, toggleNavDrawer, classes, user, logout, ...settings }) => {
+const NavDrawer = ({
+  open,
+  toggleNavDrawer,
+  classes,
+  user,
+  logout,
+  addSavedLocation,
+  ...settings
+}) => {
   return (
     <Drawer open={open} onRequestClose={toggleNavDrawer(false)}>
       <div className={classes.content}>
@@ -23,7 +31,13 @@ const NavDrawer = ({ open, toggleNavDrawer, classes, user, logout, ...settings }
         </div>
         <Settings {...settings} />
         <Divider />
-        <Account classes={classes} user={user} logout={logout} toggleNavDrawer={toggleNavDrawer} />
+        <Account
+          classes={classes}
+          user={user}
+          addSavedLocation={addSavedLocation}
+          logout={logout}
+          toggleNavDrawer={toggleNavDrawer}
+        />
       </div>
     </Drawer>
   )
