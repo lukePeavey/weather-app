@@ -62,37 +62,22 @@ export const weatherReducer = (state = initialState, action) => {
   const placeid = payload ? payload.placeid || 'auto' : null
 
   switch (type) {
-    // This action is dispatched to fetch complete weather data for the
-    // currently displayed location. See weather sagas for more details
-    case types.WEATHER_FOR_ACTIVE_PLACE_REQUEST:
-      return { ...state, fetchingWeather: true }
-    // Set isFetching to false when this action completes successfully.
-    case types.WEATHER_FOR_ACTIVE_PLACE_SUCCESS:
-      return { ...state, fetchingWeather: false }
-
-    // @todo - need separate isFetching flag for this action.
-    case types.WEATHER_FOR_SAVED_PLACES_REQUEST:
-      return { ...state, fetchingWeatherForSavedPlaces: true }
-    // This action is dispatched to fetch weather data for the user's
-    // saved locations. See weather sagas for more details
-    case types.WEATHER_FOR_SAVED_PLACES_SUCCESS:
-      return { ...state, fetchingWeatherForSavedPlaces: false }
-
-    // FETCH_WEATHER fetches the current weather and basic 10 day forecast
-    // for a single location. This is the data required to render the initial
-    // state of the three weather views. Hourly forecast data is not displayed
-    // by default, so it is fetched separately to speed up the initial render
-    // of the weather views.
-    case types.FETCH_WEATHER_SUCCESS:
+    // Fetch current weather success
+    case types.FETCH_CURRENT_WEATHER_SUCCESS:
       return {
         ...state,
         current: {
           ...state.current,
-          [payload.placeid]: payload.weather.current
-        },
+          [payload.placeid]: payload.weather
+        }
+      }
+
+    case types.FETCH_DAILY_FORECAST_SUCCESS:
+      return {
+        ...state,
         forecastDays: {
           ...state.forecastDays,
-          [payload.placeid]: payload.weather.days
+          [payload.placeid]: payload.days
         }
       }
 
@@ -102,7 +87,7 @@ export const weatherReducer = (state = initialState, action) => {
         ...state,
         forecastHours: {
           ...state.forecastHours,
-          [payload.placeid]: payload.weather.hours
+          [payload.placeid]: payload.hours
         }
       }
 
