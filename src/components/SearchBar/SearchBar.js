@@ -5,25 +5,23 @@ import classnames from 'classnames'
 import Input from '../Input'
 import { SearchIcon } from '../icons'
 
-/** Places (geo location) search bar */
+/** Places search bar component */
 class SearchBar extends Component {
   render() {
-    const { classes, value, className, inputProps, children } = this.props
-    const { placeholder } = this.props
+    const { classes, value, handleChange, isActive, currentPlace } = this.props
     return (
-      <form className={classnames(classes.root, className)}>
-        {children}
+      <div className={classes.root}>
         <Input
           type="search"
           name="geoSearch"
           className={classes.input}
           autoComplete="off"
           placeholder={'Search for city, state or zip'}
-          value={value}
-          {...inputProps}
+          value={isActive ? value : currentPlace}
+          onChange={handleChange}
         />
-        <SearchIcon className={classes.icon} tabIndex={-1} />
-      </form>
+        <SearchIcon className={classes.icon} tabIndex={0} />
+      </div>
     )
   }
 }
@@ -49,11 +47,13 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
     position: 'absolute',
     top: 'calc(50% - 12px)',
     right: spacing.unit,
-    color: 'rgba(0,0,0,0.2)'
+    color: 'rgba(0,0,0,0.2)',
+    cursor: 'inherit',
+    pointerEvents: 'none'
   },
   [breakpoints.down('md')]: {
     root: {
-      maxWidth: '100%'
+      minWidth: '100%'
     }
   }
 })
