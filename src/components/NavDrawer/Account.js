@@ -1,16 +1,8 @@
 import React, { Component } from 'react'
-import { withStyles } from 'material-ui/styles'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import ListSubheader from 'material-ui/List/ListSubheader'
 import { Link } from 'react-router-dom'
-import Divider from 'material-ui/Divider'
-import {
-  AccountIcon,
-  AddAccountIcon,
-  AccountCircleIcon,
-  FilterListIcon,
-  AddPlaceIcon
-} from '../icons'
+import { AccountIcon, AddAccountIcon, FilterListIcon, AddPlaceIcon } from '../icons'
 
 class Account extends Component {
   render() {

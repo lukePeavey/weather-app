@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withStyles } from 'material-ui/styles'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import List, { ListItem } from 'material-ui/List'
+import ListSubheader from 'material-ui/List/ListSubheader'
 import Radio, { RadioGroup } from 'material-ui/Radio'
 import Switch from 'material-ui/Switch'
-import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form'
-import ListSubheader from 'material-ui/List/ListSubheader'
-import Divider from 'material-ui/Divider'
+import { FormControl, FormControlLabel } from 'material-ui/Form'
 
 const Settings = ({ classes, settings, changeSetting }) => (
   <List subheader={<ListSubheader>Settings</ListSubheader>} className={classes.list}>

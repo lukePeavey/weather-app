@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import NavBar from 'material-ui/AppBar'
 import Tabs, { Tab } from 'material-ui/Tabs'

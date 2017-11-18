@@ -1,12 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
-import Button from 'material-ui/Button'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
-import ListSubheader from 'material-ui/List/ListSubheader'
 import Divider from 'material-ui/Divider'
-import { AccountIcon, AccountCircleIcon, DropDownIcon, AddPlaceIcon } from '../icons'
+import { AccountCircleIcon, DropDownIcon } from '../icons'
 import Settings from './Settings'
 import Account from './Account'
 

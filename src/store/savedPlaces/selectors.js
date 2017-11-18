@@ -1,4 +1,4 @@
-import { get, isEmpty, values } from 'lodash'
+import get from 'lodash/get'
 
 export const getSavedPlaceIds = state => {
   return get(state, 'savedPlaces', [])

@@ -39,7 +39,6 @@ export const placesReducer = (state = initialState, action) => {
       }
 
     case types.FETCH_PLACE_DETAILS_FAIL:
-      const { placeid, error } = payload
       return {
         ...state,
         places: { ...state.places, [payload.placeid]: { error: payload.error } }

@@ -11,7 +11,6 @@ import {
 } from 'redux-saga/effects'
 import { SubmissionError } from 'redux-form'
 import api from '../../utils/api'
-import get from 'lodash/get'
 import * as fromState from '../selectors'
 import * as notificationActions from '../notifications/actions'
 import * as actions from './actions'
@@ -101,7 +100,7 @@ function* loginFlow() {
  */
 function* signup({ payload: { data, resolve, reject } }) {
   try {
-    const response = yield call(api.post, '/auth/register', data)
+    yield call(api.post, '/auth/register', data)
     resolve(yield put(actions.signupSuccess()))
   } catch (error) {
     yield put(actions.signupFail())

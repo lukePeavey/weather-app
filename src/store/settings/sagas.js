@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, put, call, all, select } from 'redux-saga/effects'
+import { takeLatest, put, call, all, select } from 'redux-saga/effects'
 import api from '../../utils/api'
 
 import * as types from './constants'

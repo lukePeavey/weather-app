@@ -1,9 +1,7 @@
 import { takeEvery, put, call, all, select } from 'redux-saga/effects'
 import api from '../../utils/api'
-import { fetchWeather } from '../weather/sagas'
 import * as types from './constants'
 import * as actions from './actions'
-import * as weatherActions from '../weather/actions'
 import { fetchPlaceDetails } from '../places/sagas'
 import * as fromState from '../selectors'
 
@@ -27,7 +25,7 @@ function* fetchSavedPlaces() {
 function* addSavedPlace() {
   try {
     const placeid = yield select(fromState.getActivePlaceId)
-    const { place_id, location, ...place } = yield select(fromState.getPlace, placeid)
+    const { place_id, location } = yield select(fromState.getPlace, placeid)
     if (place_id && location) {
       yield call(api.post, '/user/places', { place_id, location })
       yield put(actions.addSavedPlaceSuccess())

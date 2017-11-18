@@ -1,4 +1,4 @@
-import { blue, deepOrange, blueGrey, deepPurple } from 'material-ui/colors'
+import { blueGrey, deepPurple } from 'material-ui/colors'
 
 export const primary = deepPurple
 export const secondary = blueGrey

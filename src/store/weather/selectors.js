@@ -1,4 +1,4 @@
-import { get, isEmpty, values } from 'lodash'
+import get from 'lodash/get'
 
 export const getCurrentWeatherIcon = (state, placeid) => {
   return get(state, `weather.current.${placeid}.conditions.icon`, '')

@@ -1,4 +1,4 @@
-import { merge, isEmpty, isObject } from 'lodash'
+import { isObject } from 'lodash'
 import { stringify } from 'query-string'
 import config from '../config'
 

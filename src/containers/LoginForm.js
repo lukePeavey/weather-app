@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
 import { loginRequest } from '../store/auth/actions'
-import { Link } from 'react-router-dom'
 
 /**
  * Container for the the LoginForm component. Form state is managed with

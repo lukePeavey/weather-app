@@ -1,5 +1,4 @@
 import * as types from './constants'
-const assign = Object.assign
 
 const initialState = {
   /** Flag that indicates if fetching weather for the active location */
@@ -59,7 +58,6 @@ const initialState = {
  */
 export const weatherReducer = (state = initialState, action) => {
   const { type, payload } = action
-  const placeid = payload ? payload.placeid || 'auto' : null
 
   switch (type) {
     // Fetch current weather success

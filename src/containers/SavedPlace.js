@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import SavedPlace from '../components/SavedPlaces/SavedPlace'
 import * as fromState from '../store/selectors'
 

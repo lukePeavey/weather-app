@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import React from 'react'
+import { Field } from 'redux-form'
 import { withStyles } from 'material-ui/styles'
 import TextField from '../TextField'
 import Button from 'material-ui/Button'

@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import get from 'lodash/get'
-import isEmpty from 'lodash/isEmpty'
-import { delay } from 'redux-saga'
-import api from '../utils/api'
 import { bindActionCreators } from 'redux'
 import * as actions from '../store/places/actions'
 import { fetchSavedPlacesRequest } from '../store/savedPlaces/actions'
@@ -36,7 +32,7 @@ class PlacesMenuContainer extends Component {
   }
 
   async componentDidMount() {
-    const { dispatch, savedPlaces } = this.props
+    const { dispatch } = this.props
     dispatch.fetchSavedPlacesRequest()
   }
 
@@ -56,7 +52,6 @@ class PlacesMenuContainer extends Component {
 
   /** Set active state to true when menu is clicked */
   handleClick = event => {
-    const { dispatch, savedPlaces } = this.props
     if (!this.props.isActive) {
       this.setState({ pristine: false })
       this.showMenu()

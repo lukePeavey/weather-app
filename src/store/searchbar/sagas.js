@@ -1,10 +1,7 @@
-import { takeEvery, takeLatest, put, call, all, select } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
-import { SubmissionError } from 'redux-form'
+import { takeLatest, put, call, all } from 'redux-saga/effects'
 import api from '../../utils/api'
 import * as actions from './actions'
 import * as types from './constants'
-import * as fromState from '../selectors'
 
 /**
  * Worker saga that handles fetching autocomplete suggestions for the

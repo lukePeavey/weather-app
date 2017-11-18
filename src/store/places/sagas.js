@@ -1,16 +1,5 @@
-import React from 'react'
-import { takeEvery, takeLatest, put, call, all, select } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
-import { SubmissionError } from 'redux-form'
+import { takeLatest, put, call, all, select } from 'redux-saga/effects'
 import api from '../../utils/api'
-import get from 'lodash/get'
-import toPairs from 'lodash/toPairs'
-import fromPairs from 'lodash/fromPairs'
-import isEmpty from 'lodash/isEmpty'
-import values from 'lodash/values'
-import Button from 'material-ui/Button'
-import * as weatherActions from '../weather/actions'
-import * as notifications from '../notifications/actions'
 import * as actions from './actions'
 import * as types from './constants'
 import * as fromState from '../selectors'
@@ -23,11 +12,7 @@ export function* fetchPlaceDetails(placeid) {
       place = yield call(api.get, '/places/details', { placeid })
       yield put(actions.fetchPlaceDetailsSuccess(place))
     }
-  } catch (error) {
-    console.group('Fetch Place Details')
-    console.error(error)
-    console.groupEnd()
-  }
+  } catch (error) {}
 }
 /**
  * Handles the process of selecting the location for which to show weather.
@@ -46,16 +31,7 @@ export function* fetchPlaceDetails(placeid) {
 function* selectLocation({ payload: { placeid } }) {
   yield put(actions.setActivePlaceId(placeid))
   try {
-    const place = yield fetchPlaceDetails(placeid)
-    const notification = {
-      message: <span>Add to saved locations?</span>,
-      action: (
-        <Button color="accent" onClick={e => console.log(placeid)}>
-          Save
-        </Button>
-      )
-    }
-    yield put(notifications.addNotification(notification))
+    yield fetchPlaceDetails(placeid)
   } catch (error) {
     yield put({ type: 'SELECT_LOCATION_FAILED' })
   }

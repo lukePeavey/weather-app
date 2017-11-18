@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 import SignupForm from '../components/SignupForm'
 import { signupRequest } from '../store/auth/actions'

@@ -28,8 +28,7 @@ class PlacesMenu extends Component {
       classes,
       handleInputChange,
       getElementRef,
-      getSearchBarRef,
-      ...props
+      getSearchBarRef
     } = this.props
     return (
       <div className={classes.root} onClick={handleClick} ref={getElementRef}>

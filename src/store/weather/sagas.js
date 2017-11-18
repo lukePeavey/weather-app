@@ -1,6 +1,5 @@
-import { takeEvery, takeLatest, put, call, all, select, delay } from 'redux-saga/effects'
+import { takeEvery, put, call, all, select } from 'redux-saga/effects'
 import get from 'lodash/get'
-import toPairs from 'lodash/toPairs'
 import isEmpty from 'lodash/isEmpty'
 import values from 'lodash/values'
 import api from '../../utils/api'
