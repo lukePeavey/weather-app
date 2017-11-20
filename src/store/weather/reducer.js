@@ -79,11 +79,6 @@ export const weatherReducer = (state = initialState, action) => {
         }
       }
 
-    // Sets active weather tab
-    case types.SET_WEATHER_VIEW:
-      const view = state.views.find(({ index }) => index === payload.index)
-      return view ? { ...state, activeView: view.index } : state
-
     default:
       return state
   }
