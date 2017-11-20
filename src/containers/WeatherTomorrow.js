@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import WeatherToday from '../components/WeatherToday'
+import WeatherTomorrow from '../components/WeatherTomorrow'
 import * as fromState from '../store/selectors'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -7,4 +7,4 @@ const mapStateToProps = (state, ownProps) => ({
   unit: fromState.getUnit(state)
 })
 
-export default connect(mapStateToProps, null)(WeatherToday)
+export default connect(mapStateToProps, null)(WeatherTomorrow)
