@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Input from '../Input'
 
 const TextField = props => {
-  const { classes, className, label, id, input, type, placeholder, children } = props
+  const { classes, className, label, id, input, type, placeholder } = props
   return (
     <div className={classnames(classes.formControl, className)}>
       <label className={classes.label} htmlFor={id}>

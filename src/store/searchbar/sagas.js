@@ -9,7 +9,6 @@ import * as types from './constants'
  * @todo - Throttle autocomplete requests
  */
 function* fetchSearchSuggestions({ payload: { input } }) {
-  console.log('here')
   try {
     const params = { input, types: '(regions)' }
     const suggestions = yield call(api.get, '/places/autocomplete', params)

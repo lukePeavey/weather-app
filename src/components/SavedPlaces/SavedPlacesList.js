@@ -23,7 +23,6 @@ const SavedPlaces = ({ placeIds = [], handleSelect, classes }) => {
 const styles = ({ palette, spacing }) => ({
   place: {
     display: 'flex',
-    display: 'flex',
     alignItems: 'center',
     width: '100%',
     height: spacing.unit * 8,

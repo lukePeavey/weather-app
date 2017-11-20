@@ -1,10 +1,11 @@
 import * as types from './constants'
 
 const initialState = {
-  /** Flag that indicates if fetching weather for the active location */
+  /**
+   * Flag that indicates if fetching weather for the active location
+   */
   fetchingWeather: false,
-  /** Flag that indicates if fetching weather for user's saved locations */
-  fetchingWeatherForSavedPlaces: false,
+
   /**
    * On object containing current weather conditions for one or more locations.
    * Each key is a placeid, and the value is an object containing current weather
@@ -22,10 +23,7 @@ const initialState = {
    * Each key is a placeid, and the value is an array of forecast hours
    * (covering a total of 10 days) for that location
    */
-  forecastHours: {},
-
-  /** The current active weather tab */
-  activeView: 0
+  forecastHours: {}
 }
 
 /**
@@ -41,16 +39,12 @@ const initialState = {
  * the following structure: the keys are placeIDs, which correspond to location
  * in the Google Places API, and values are the weather data for that location.
  *
- * @todo The overall design of this redux module still needs work
  * @todo handle failed fetch weather request
- * @todo figure out how to properly normalize weather API data with Normalizr.js
- * @todo use react-router to handle weather tab navigation or move to separate redux module
  */
 export const weatherReducer = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {
-    // Fetch current weather success
     case types.FETCH_CURRENT_WEATHER_SUCCESS:
       return {
         ...state,

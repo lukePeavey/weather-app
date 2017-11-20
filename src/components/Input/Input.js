@@ -16,7 +16,6 @@ const styles = ({ palette }) => {
       lineHeight: '1.5',
       boxShadow: 'none',
       backgroundColor: 'transparent',
-      boxShadow: 'none',
       border: 'none',
       borderRadius: 0,
       '&::placeholder': placeholder,
