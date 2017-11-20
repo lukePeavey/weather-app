@@ -9,6 +9,9 @@ export const savedPlacesReducer = (state = initialState, action) => {
     case types.FETCH_SAVED_PLACES_SUCCESS:
       return payload.places
 
+    case 'LOGOUT':
+      return initialState
+
     default:
       return state
   }

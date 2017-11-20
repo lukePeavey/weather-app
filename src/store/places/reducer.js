@@ -47,6 +47,9 @@ export const placesReducer = (state = initialState, action) => {
     case types.SET_ACTIVE_PLACE_ID:
       return { ...state, activePlaceId: payload.placeid }
 
+    case 'LOGOUT':
+      return initialState
+
     default:
       return state
   }

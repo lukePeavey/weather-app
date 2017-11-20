@@ -73,6 +73,9 @@ export const weatherReducer = (state = initialState, action) => {
         }
       }
 
+    case 'LOGOUT':
+      return initialState
+
     default:
       return state
   }

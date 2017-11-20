@@ -18,6 +18,9 @@ export const settingsReducer = (state = initialState, action) => {
         [payload.name]: payload.value
       }
 
+    case 'LOGOUT':
+      return initialState
+
     default:
       return state
   }
