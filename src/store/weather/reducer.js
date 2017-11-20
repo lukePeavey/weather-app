@@ -24,16 +24,6 @@ const initialState = {
    */
   forecastHours: {},
 
-  /**
-   * The weather screen has three views: today, tomorrow, and 10 day forecast.
-   * The views are displayed as tabs.
-   */
-  views: [
-    { slug: 'current', label: 'Current', index: 0 },
-    { slug: 'tomorrow', label: 'Tomorrow', index: 1 },
-    { slug: 'forecast', label: '10 Days', index: 2 }
-  ],
-
   /** The current active weather tab */
   activeView: 0
 }

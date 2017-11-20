@@ -1,9 +1,5 @@
 import * as types from './constants'
 
-export const setWeatherView = index => ({
-  type: types.SET_WEATHER_VIEW,
-  payload: { index }
-})
 /** Fetch weather data for a single location */
 export const fetchCurrentWeatherRequest = place => ({
   type: types.FETCH_CURRENT_WEATHER_REQUEST,
