@@ -2,77 +2,61 @@ import * as types from './constants'
 
 const initialState = {
   /**
-   * Flag that indicates if fetching weather for the active location
+   * A flag that indicates if fetching weather for the active location
    */
   fetchingWeather: false,
 
   /**
-   * On object containing current weather conditions for one or more locations.
-   * Each key is a placeid, and the value is an object containing current weather
-   * conditions for that location.
+   * An object containing current weather conditions for multiple locations. Each
+   * entry represents the weather data for a single location, where the key is a
+   * placeID and the value is an object containing current weather data.
    */
   current: {},
   /**
-   * An object containing daily forecast data for one or more locations.
-   * Each key is place id, and the value is an array of forecast days (10
-   * days total) for that location
+   * An object containing daily forecast data for multiple locations. Each entry
+   * represents the data for a single location, where the key is a placeID and the
+   * value is an array of forecastDays (10 days total). Each forecastDay is an
+   * object containing weather data for that period.
    */
   forecastDays: {},
   /**
-   * An object containing hourly forecast data for one or more locations.
-   * Each key is a placeid, and the value is an array of forecast hours
-   * (covering a total of 10 days) for that location
+   * An object containing hourly forecast data for multiple locations. Each entry
+   * represents the data for a single location, where the key is a placeID and the
+   * value is an array of forecastHours (240 hours total). Each forecastHour is an
+   * object containing weather data for that period.
    */
   forecastHours: {}
 }
 
 /**
- * The weather state stores weather data for multiple locations. Right now,
- * it will store the data for every location that the user visits in a single
- * session (until browser refresh). This prevents having to fetch data multiple
- * times if user switches back and forth between locations. Ideally, it should
- * only store data for the user's saved locations, since there is good chance
- * he/she will revisit these in the same session.
- *
- * There are three types of weather data: current conditions, daily forecast,
- * and hourly forecast. Each of these types is stored in its own table, with
- * the following structure: the keys are placeIDs, which correspond to location
- * in the Google Places API, and values are the weather data for that location.
- *
+ * The weather state stores weather data for multiple locations. This prevents having
+ * to re-fetch data if the user switches back and forth between locations. It also
+ * cuts down on the number of API requests.
  * @todo handle failed fetch weather request
  */
 export const weatherReducer = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {
-    case types.FETCH_CURRENT_WEATHER_SUCCESS:
-      return {
-        ...state,
-        current: {
-          ...state.current,
-          [payload.placeid]: payload.weather
+    case types.FETCH_WEATHER_SUCCESS:
+      const data = payload.data
+      const placeid = payload.placeid
+      // Fetch weather action gets weather data for a single location.
+      if (data) {
+        return {
+          ...state,
+          current: data.current ? { ...state.current, [placeid]: data.current } : state.current,
+          days: data.days ? { ...state.days, [placeid]: data.days } : state.days,
+          hours: data.hours ? { ...state.hours, [placeid]: data.hours } : state.hours
         }
       }
+      return state
 
-    case types.FETCH_DAILY_FORECAST_SUCCESS:
-      return {
-        ...state,
-        forecastDays: {
-          ...state.forecastDays,
-          [payload.placeid]: payload.days
-        }
-      }
+    // Handle failed attempt to fetch weather
+    case types.FETCH_WEATHER_FAIL:
+      return state
 
-    // Same process described above, except for hourly weather forecast
-    case types.FETCH_HOURLY_FORECAST_SUCCESS:
-      return {
-        ...state,
-        forecastHours: {
-          ...state.forecastHours,
-          [payload.placeid]: payload.hours
-        }
-      }
-
+    // Clear weather state on logout
     case 'LOGOUT':
       return initialState
 
