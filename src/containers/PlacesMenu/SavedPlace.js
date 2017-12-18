@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import SavedPlace from '../components/SavedPlaces/SavedPlace'
-import * as fromState from '../store/selectors'
+import SavedPlace from '../../components/PlacesMenu/SavedPlace'
+import * as fromState from '../../store/selectors'
 
 const mapStateToProps = (state, ownProps) => ({
   place: fromState.getPlace(state, ownProps.id),
-  weather: fromState.getCurrentWeather(state, ownProps.id)
+  weather: fromState.getForecastCurrent(state, ownProps.id),
+  unit: fromState.getUnit(state)
 })
 
 const mapDispatchToProps = null

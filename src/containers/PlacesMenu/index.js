@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withStyles } from 'material-ui/styles'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../store/places/actions'
-import { fetchSavedPlacesRequest } from '../store/savedPlaces/actions'
-import * as fromState from '../store/selectors'
-import PlacesMenu from '../components/PlacesMenu'
+import isEmpty from 'lodash/isEmpty'
+
+// Import Redux Actions + selectors
+import * as actions from '../../store/places/actions'
+import { fetchSavedPlacesRequest } from '../../store/savedPlaces/actions'
+import * as fromState from '../../store/selectors'
+
+// Import child containers
+import SearchBar from './SearchBar'
+import SearchSuggestions from './SearchSuggestions'
+import SavedPlaces from './SavedPlacesList'
+
+// Components
+import Dropdown from '../../components/Dropdown'
 
 /**
  * The places menu consists of a search bar and dropdown menu that can be
@@ -19,10 +30,12 @@ import PlacesMenu from '../components/PlacesMenu'
  */
 class PlacesMenuContainer extends Component {
   static propTypes = {
-    /** Places menu Active state (passed down from AppBar) */
+    /** Places menu active state (passed down from AppBar) */
     isActive: PropTypes.bool.isRequired,
     /** toggles the places menu's active state (passed down from AppBar) */
     togglePlacesMenu: PropTypes.func.isRequired,
+    /** The current value of the search bar's inptu (redux state).  */
+    searchValue: PropTypes.string.isRequired,
     /** Bound redux actions. See store/places/actions */
     dispatch: PropTypes.object.isRequired
   }
@@ -93,18 +106,40 @@ class PlacesMenuContainer extends Component {
   }
 
   render() {
+    const { classes, searchValue, isActive } = this.props
+    const { handleClick, getElementRef, getSearchBarRef, handleSelect } = this
+
     return (
-      <PlacesMenu
-        {...this.props}
-        {...this.state}
-        getElementRef={this.getElementRef}
-        getSearchBarRef={this.getSearchBarRef}
-        handleClick={this.handleClick}
-        handleSelect={this.handleSelect}
-      />
+      <div className={classes.root} onClick={handleClick} ref={getElementRef}>
+        <SearchBar getSearchBarRef={getSearchBarRef} isActive={isActive} />
+        <Dropdown open={isActive}>
+          {isEmpty(searchValue) ? (
+            <SavedPlaces handleSelect={handleSelect} />
+          ) : (
+            <SearchSuggestions handleSelect={handleSelect} />
+          )}
+        </Dropdown>
+      </div>
     )
   }
 }
+
+const styles = ({ spacing, breakpoints }) => ({
+  root: {
+    zIndex: 99,
+    position: 'relative',
+    height: spacing.unit * 5,
+    flex: '1 0 auto',
+
+    [breakpoints.up('md')]: {
+      margin: 0,
+      marginRight: spacing.unit * 6,
+      width: 'auto',
+      maxWidth: 500,
+      flex: '1 0 50%'
+    }
+  }
+})
 
 const mapStateToProps = (state, ownProps) => ({
   searchValue: fromState.getSearchInputValue(state),
@@ -115,4 +150,4 @@ const mapDispatchToProps = dispatch => ({
   dispatch: bindActionCreators({ ...actions, fetchSavedPlacesRequest }, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlacesMenuContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PlacesMenuContainer))
