@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import WeatherTomorrow from '../components/WeatherTomorrow'
-import * as fromState from '../store/selectors'
+import WeatherTomorrow from '../../components/Weather/Tomorrow'
+import * as fromState from '../../store/selectors'
 
 const mapStateToProps = (state, ownProps) => ({
   forecast: fromState.getForecastDayByIndex(state, 1),
