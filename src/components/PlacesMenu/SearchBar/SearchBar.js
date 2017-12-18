@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
-import Input from '../Input'
-import { SearchIcon } from '../icons'
+import Input from '../../Input'
+import { SearchIcon } from '../../icons'
 
 /** Places search bar component */
 class SearchBar extends Component {
@@ -26,7 +26,6 @@ class SearchBar extends Component {
 
 const styles = ({ palette, spacing, breakpoints, transitions }) => ({
   root: {
-    width: '100%',
     position: 'relative',
     flex: '1 0 0',
     height: spacing.unit * 5
@@ -34,7 +33,6 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
   input: {
     height: 'inherit',
     lineHeight: 'inherit',
-    width: '100%',
     paddingLeft: spacing.unit * 7,
     color: palette.input.inputText,
     backgroundColor: 'rgba(255, 255, 255, 1)',
@@ -45,14 +43,9 @@ const styles = ({ palette, spacing, breakpoints, transitions }) => ({
     position: 'absolute',
     top: 'calc(50% - 12px)',
     right: spacing.unit,
-    color: 'rgba(0,0,0,0.2)',
+    color: 'rgba(0,0,0,0.3)',
     cursor: 'inherit',
     pointerEvents: 'none'
-  },
-  [breakpoints.down('md')]: {
-    root: {
-      minWidth: '100%'
-    }
   }
 })
 

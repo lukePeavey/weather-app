@@ -1,6 +1,6 @@
 import React from 'react'
 import get from 'lodash/get'
-import { PlaceIcon } from '../icons'
+import { PlaceIcon } from '../../icons'
 
 /**
  * Renders a single autocomplete suggestion.
