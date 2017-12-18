@@ -41,7 +41,6 @@ const styles = ({ palette, spacing }) => ({
     boxShadow: 'none',
     borderBottom: 'solid 1px rgba(0,0,0,0.1)',
     transition: 'all 100ms',
-    borderBottom: 'solid 1px rgba(0,0,0,0.08)',
     '&:hover': {
       backgroundColor: 'rgba(0,0,0,0.03)'
     },
