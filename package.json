@@ -9,6 +9,7 @@
     "dotenv": "^4.0.0",
     "jss": "^9.0.0",
     "jss-preset-default": "^4.0.1",
+    "localforage": "^1.6.0",
     "lodash": "^4.17.4",
     "material-ui": "next",
     "moment": "^2.19.2",
@@ -22,6 +23,9 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
+    "redux-persist": "^5.9.1",
+    "redux-persist-transform-expire": "^0.0.2",
+    "redux-persist-transform-filter": "^0.0.16",
     "redux-saga": "^0.15.6",
     "sanitize.css": "^5.0.0",
     "shortid": "^2.2.8"
