@@ -14,7 +14,7 @@ function* fetchSearchSuggestions({ payload: { input } }) {
     const suggestions = yield call(api.get, '/places/autocomplete', params)
     yield put(actions.fetchSearchSuggestionsSuccess(suggestions))
   } catch (error) {
-    yield put(actions.fetchSearchSuggestionsFail('No matching results found'))
+    yield put(actions.fetchSearchSuggestionsFail())
     if (process.env.NODE_ENV === 'development') {
       console.error(error)
     }

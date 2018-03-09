@@ -1,6 +1,16 @@
-const MODULE_NAMESPACE = 'searchbar'
+const MODULE_NAMESPACE = 'UI'
 const type = actionName => `${MODULE_NAMESPACE}/${actionName}`
 
+// Weather tabs
+export const SET_ACTIVE_TAB = type('SET_ACTIVE_TAB')
+
+// App bar
+export const OPEN_PLACES_MENU = 'OPEN_PLACES_MENU'
+export const CLOSE_PLACES_MENU = 'CLOSE_PLACES_MENU'
+export const OPEN_NAV_DRAWER = 'OPEN_NAV_DRAWER'
+export const CLOSE_NAV_DRAWER = 'CLOSE_NAV_DRAWER'
+
+// Location search bar
 export const CHANGE_INPUT_VALUE = type('CHANGE_INPUT_VALUE')
 export const CLEAR_SEARCH_SUGGESTIONS = type('CLEAR_SEARCH_SUGGESTIONS')
 
