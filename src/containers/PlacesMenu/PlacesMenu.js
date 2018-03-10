@@ -5,11 +5,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import isEmpty from 'lodash/isEmpty'
 
-// Import Redux Actions + selectors
-import * as actions from '../../store/places/actions'
+// Import Redux actions + selectors
+import { selectLocation } from '../../store/places/actions'
 import { addNotification } from '../../store/notifications/actions'
 import { addSavedPlaceRequest } from '../../store/savedPlaces/actions'
 import { fetchSavedPlacesRequest } from '../../store/savedPlaces/actions'
+import { openPlacesMenu, closePlacesMenu } from '../../store/ui/actions'
 import * as fromState from '../../store/selectors'
 
 // Import child containers
@@ -17,7 +18,7 @@ import SearchBar from './SearchBar'
 import SearchSuggestions from './SearchSuggestions'
 import SavedPlaces from './SavedPlacesList'
 
-// Components
+// Import components
 import Dropdown from '../../components/Dropdown'
 
 /**
@@ -32,9 +33,9 @@ import Dropdown from '../../components/Dropdown'
  */
 class PlacesMenuContainer extends Component {
   static propTypes = {
-    /** Places menu active state (passed down from AppBar) */
-    isActive: PropTypes.bool.isRequired,
-    /** toggles the places menu's active state (passed down from AppBar) */
+    /** Places menu active state */
+    isOpen: PropTypes.bool.isRequired,
+    /** toggles the places menu's active state */
     togglePlacesMenu: PropTypes.func.isRequired,
     /** The current value of the search bar's inptu (redux state).  */
     searchValue: PropTypes.string.isRequired,
@@ -53,21 +54,23 @@ class PlacesMenuContainer extends Component {
 
   /** Opens the places menu */
   showMenu = () => {
-    this.props.togglePlacesMenu(true)()
+    const { dispatch } = this.props
+    dispatch.openPlacesMenu()
     // When the menu is active/open, attach an event listener to handle clicks outside the menu container.
     document.addEventListener('click', this.handleOutsideClick, false)
   }
 
   /** Hides the menu */
   hideMenu = () => {
-    this.props.togglePlacesMenu(false)()
+    const { dispatch } = this.props
+    dispatch.closePlacesMenu()
     this.clearSearchBar()
     document.removeEventListener('click', this.handleOutsideClick, false)
   }
 
   /** Set active state to true when menu is clicked */
   handleClick = event => {
-    if (!this.props.isActive) {
+    if (!this.props.isOpen) {
       this.setState({ pristine: false })
       this.showMenu()
     }
@@ -108,13 +111,13 @@ class PlacesMenuContainer extends Component {
   }
 
   render() {
-    const { classes, searchValue, isActive } = this.props
+    const { classes, searchValue, isOpen } = this.props
     const { handleClick, getElementRef, getSearchBarRef, handleSelect } = this
 
     return (
       <div className={classes.root} onClick={handleClick} ref={getElementRef}>
-        <SearchBar getSearchBarRef={getSearchBarRef} isActive={isActive} />
-        <Dropdown open={isActive}>
+        <SearchBar getSearchBarRef={getSearchBarRef} />
+        <Dropdown open={isOpen}>
           {isEmpty(searchValue) ? (
             <SavedPlaces handleSelect={handleSelect} />
           ) : (
@@ -144,6 +147,7 @@ const styles = ({ spacing, breakpoints }) => ({
 })
 
 const mapStateToProps = (state, ownProps) => ({
+  isOpen: fromState.getIsPlacesMenuOpen(state),
   searchValue: fromState.getSearchInputValue(state),
   unit: fromState.getUnit(state)
 })
@@ -151,10 +155,12 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   dispatch: bindActionCreators(
     {
-      ...actions,
-      fetchSavedPlacesRequest,
-      addNotification,
-      addSavedPlaceRequest
+      selectLocation: selectLocation,
+      fetchSavedPlacesRequest: fetchSavedPlacesRequest,
+      addNotification: addNotification,
+      addSavedPlaceRequest: addSavedPlaceRequest,
+      openPlacesMenu: openPlacesMenu,
+      closePlacesMenu: closePlacesMenu
     },
     dispatch
   )

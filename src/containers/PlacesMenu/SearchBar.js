@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../../store/searchbar/actions'
+// Import Redux actions + selectors
+import * as actions from '../../store/ui/actions'
 import * as fromState from '../../store/selectors'
+
+// Import components
 import SearchBar from '../../components/PlacesMenu/SearchBar'
 
 /**
@@ -56,7 +59,14 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  dispatch: bindActionCreators({ ...actions }, dispatch)
+  dispatch: bindActionCreators(
+    {
+      changeInputValue: actions.changeSearchValue,
+      fetchSearchSuggestionsRequest: actions.fetchSearchSuggestionsRequest,
+      clearSearchSuggestions: actions.clearSearchSuggestions
+    },
+    dispatch
+  )
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBarContainer)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
-import NavBar from 'material-ui/AppBar'
+import MuiAppBar from 'material-ui/AppBar'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import MenuButton from './MenuButton'
 import NavDrawer from '../../containers/NavDrawer'
@@ -11,45 +11,32 @@ import PlacesMenu from '../../containers/PlacesMenu'
  */
 const AppBar = ({
   classes,
-  navDrawerOpen,
   toggleNavDrawer,
-  placesMenuActive,
   togglePlacesMenu,
   handleTabChange,
-  activeTab = 0,
-  tabs = [],
-  settings,
-  changeSetting,
-  logout,
-  user
+  isPlacesMenuOpen,
+  activeTabIndex = 0,
+  tabs = []
 }) => [
-  <NavDrawer
-    open={navDrawerOpen}
-    toggleNavDrawer={toggleNavDrawer}
-    user={user}
-    settings={settings}
-    changeSetting={changeSetting}
-    logout={logout}
-    key={'drawer'}
-  />,
-  <NavBar position="fixed" color="primary" className={classes.root} key={'navBar'}>
+  <NavDrawer toggleNavDrawer={toggleNavDrawer} key={'drawer'} />,
+  <MuiAppBar position="fixed" color="primary" className={classes.root} key={'navBar'}>
     <div className={classes.toolBar}>
       <MenuButton
         toggleNavDrawer={toggleNavDrawer}
         togglePlacesMenu={toggleNavDrawer}
-        placesMenuActive={placesMenuActive}
+        isPlacesMenuOpen={isPlacesMenuOpen}
         className={classes.menuIcon}
       />
-      <PlacesMenu togglePlacesMenu={togglePlacesMenu} isActive={placesMenuActive} />
+      <PlacesMenu togglePlacesMenu={togglePlacesMenu} />
       <Tabs
         className={classes.tabs}
-        value={activeTab}
+        value={activeTabIndex}
         onChange={handleTabChange}
         indicatorColor="#fff">
         {tabs.map((tab, i) => <Tab key={i} className={classes.tab} label={tab.label} />)}
       </Tabs>
     </div>
-  </NavBar>
+  </MuiAppBar>
 ]
 
 /** AppBar styles */

@@ -2,26 +2,23 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import NavDrawer from '../components/NavDrawer'
 import { logout, fetchUserRequest } from '../store/auth/actions'
 import { fetchSettingsRequest, changeSetting } from '../store/settings/actions'
 import { addSavedPlaceRequest } from '../store/savedPlaces/actions'
+import { openNavDrawer, closeNavDrawer } from '../store/ui/actions'
 import * as fromState from '../store/selectors'
+import NavDrawer from '../components/NavDrawer'
 
 class NavDrawerContainer extends Component {
   static propTypes = {
-    /** Navbar open/closed state (passed down from AppBar) */
+    /** Navbar open/closed state */
     open: PropTypes.bool.isRequired,
-    /** Function that toggles navDrawer open/closed (passed down from AppBar) */
-    toggleNavDrawer: PropTypes.func.isRequired,
-    /** Bound redux actions (see mapDispatchToProps) */
-    dispatch: PropTypes.object.isRequired,
     /** The user's settings */
     settings: PropTypes.object.isRequired,
     /** Authenticated user object (or null) */
     user: PropTypes.object,
-    /** ID of the currently active location */
-    activePlaceId: PropTypes.string.isRequired
+    /** Bound redux actions */
+    dispatch: PropTypes.object.isRequired
   }
 
   componentDidMount() {
@@ -43,15 +40,15 @@ class NavDrawerContainer extends Component {
    * Handler for the logout button in navDrawer
    */
   logout = () => {
-    const { dispatch, toggleNavDrawer } = this.props
+    const { dispatch } = this.props
     dispatch.logout()
-    toggleNavDrawer(false)()
+    dispatch.closeNavDrawer()
   }
 
-  addSavedLocation = () => {
-    const { dispatch, toggleNavDrawer } = this.props
+  addSavedPlace = () => {
+    const { dispatch } = this.props
     dispatch.addSavedPlaceRequest()
-    toggleNavDrawer(false)()
+    dispatch.closeNavDrawer()
   }
 
   render() {
@@ -60,27 +57,31 @@ class NavDrawerContainer extends Component {
         {...this.props}
         logout={this.logout}
         changeSetting={this.changeSetting}
-        addSavedLocation={this.addSavedLocation}
+        addSavedPlace={this.addSavedPlace}
       />
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
+  open: fromState.getIsNavDrawerOpen(state),
   settings: fromState.getSettings(state),
-  activePlaceId: fromState.getActivePlaceId(state),
   user: fromState.getAuthenticatedUser(state)
 })
 
-// prettier-ignore
 const mapDispatchToProps = dispatch => ({
-  dispatch: bindActionCreators({
-    logout,
-    changeSetting,
-    addSavedPlaceRequest,
-    fetchUserRequest,
-    fetchSettingsRequest,
-  }, dispatch)
+  dispatch: bindActionCreators(
+    {
+      logout: logout,
+      changeSetting: changeSetting,
+      addSavedPlaceRequest: addSavedPlaceRequest,
+      fetchUserRequest: fetchUserRequest,
+      fetchSettingsRequest: fetchSettingsRequest,
+      openNavDrawer: openNavDrawer,
+      closeNavDrawer: closeNavDrawer
+    },
+    dispatch
+  )
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavDrawerContainer)
