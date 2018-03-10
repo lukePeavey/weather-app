@@ -6,7 +6,7 @@ import { placesReducer as places } from './places/reducer'
 import { settingsReducer as settings } from './settings/reducer'
 import { weatherReducer as weather } from './weather/reducer'
 import { notificationsReducer as notifications } from './notifications/reducer'
-import { searchbarReducer as searchbar } from './searchbar/reducer'
+import { uiReducer as ui } from './ui/reducer'
 import { savedPlacesReducer as savedPlaces } from './savedPlaces/reducer'
 
 export default combineReducers({
@@ -17,6 +17,6 @@ export default combineReducers({
   settings,
   weather,
   notifications,
-  searchbar,
+  ui,
   savedPlaces
 })
