@@ -1,24 +1,24 @@
 import * as types from './constants'
 
-export const setActiveTab = tab => ({
+export const setActiveTab = index => ({
   type: types.SET_ACTIVE_TAB,
-  payload: { tab }
+  payload: { index }
 })
 
 export const openPlacesMenu = () => ({
-  type: types.openPlacesMenu
+  type: types.OPEN_PLACES_MENU
 })
 
 export const closePlacesMenu = () => ({
-  type: types.closePlacesMenu
+  type: types.CLOSE_PLACES_MENU
 })
 
 export const openNavDrawer = () => ({
-  type: types.openNavDrawer
+  type: types.OPEN_NAV_DRAWER
 })
 
 export const closeNavDrawer = () => ({
-  type: types.closeNavDrawer
+  type: types.CLOSE_NAV_DRAWER
 })
 
 export const changeSearchValue = (value = '') => ({

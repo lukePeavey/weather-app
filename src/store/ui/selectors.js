@@ -2,7 +2,9 @@ export const getSearchInputValue = state => state.ui.searchInputValue
 
 export const getSearchSuggestions = state => state.ui.searchSuggestions
 
-export const getActiveTab = state => state.ui.activeTab
+export const getActiveTabIndex = state => state.ui.activeTabIndex
+
+export const getTabs = state => state.ui.tabs
 
 export const getIsPlacesMenuOpen = state => state.ui.isPlacesMenuOpen
 
