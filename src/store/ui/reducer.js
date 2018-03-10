@@ -20,12 +20,7 @@ export const uiReducer = (state = initialState, action) => {
   const { type } = action
   switch (type) {
     case types.SET_ACTIVE_TAB:
-      if (action.payload && action.payload.tab) {
-        if (action.payload.tab in Tabs) {
-          return { ...state, activeTabIndex: action.payload.tab }
-        }
-      }
-      return state
+      return { ...state, activeTabIndex: action.payload.index }
 
     case types.OPEN_NAV_DRAWER:
       return { ...state, isNavDrawerOpen: true }
