@@ -10,7 +10,8 @@ import rootSaga from './sagas'
 // @todo configure expiration time for weather data
 export const persistConfig = {
   key: 'root',
-  storage: localForage
+  storage: localForage,
+  blacklist: ['ui', 'auth'],
 }
 
 /** The combined redux reducer for the app */
