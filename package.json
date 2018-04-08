@@ -11,7 +11,7 @@
     "jss-preset-default": "^4.0.1",
     "localforage": "^1.6.0",
     "lodash": "^4.17.4",
-    "material-ui": "next",
+    "material-ui": "^1.0.0-beta.40",
     "moment": "^2.19.2",
     "prop-types": "^15.6.0",
     "query-string": "^5.0.0",
@@ -27,6 +27,7 @@
     "redux-persist-transform-expire": "^0.0.2",
     "redux-persist-transform-filter": "^0.0.16",
     "redux-saga": "^0.15.6",
+    "reselect": "^3.0.1",
     "sanitize.css": "^5.0.0",
     "shortid": "^2.2.8"
   },
@@ -34,10 +35,12 @@
     "@storybook/addon-info": "^3.2.11",
     "@storybook/addon-options": "^3.2.10",
     "@storybook/react": "^3.2.11",
+    "aws-sdk": "^2.222.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
     "prettier": "^1.11.1",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "serve": "^6.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
